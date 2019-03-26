@@ -1,0 +1,24 @@
+.box{
+    width: 300px;
+    margin:50px auto;
+}
+.box input{
+    height: 30px;
+    width:278px;
+    padding: 0 10px;
+    border: 1px solid green;
+}
+.box ul{
+    display: none;
+    border:1px solid green;
+    border-top:none;
+}
+.box ul  li{
+    height:30px;
+    line-height: 30px;
+    padding: 0 10px;
+    cursor: pointer;
+}
+.box ul  li:hover{
+    background-color: #eee;
+}

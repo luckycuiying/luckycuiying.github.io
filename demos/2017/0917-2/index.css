@@ -1,0 +1,42 @@
+.a1 {
+    position:relative;
+    width: 200px;
+    height: 200px;          
+    background-color: red;
+}
+.a2 {
+    position:absolute;
+    width: 200px;
+    height: 100px;
+    left: 100px;
+    top: 100px; 
+    color: #fff;
+    background-color: blue
+}
+
+.a3{
+    margin-top: 200px;
+    position:relative;
+    width: 300px;
+    height: 100px;
+    color: #000;
+    background-color: yellow
+}
+.a4 {
+    position:absolute;
+    width: 200px;
+    height: 100px;
+    bottom: 100px; 
+    left: -100px;
+    color: #fff;
+    background-color: green;
+}
+.a5{
+    position:absolute;
+    width: 200px;
+    height: 100px;
+    top: 100px; 
+    left: 100px;
+    color: #000;
+    background-color: pink;
+}

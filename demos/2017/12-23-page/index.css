@@ -1,0 +1,112 @@
+*{
+    margin:0;
+    padding: 0;
+}
+input{
+    outline:none;
+}
+ul li {
+    list-style: none;
+}
+html,body{
+    width:100%;
+    color: #000;
+    font-size: 14px;
+    font-family: "微软雅黑,simsun,sans-serif";
+    -webkit-font-smoothing: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.box{
+    width: 800px;
+    margin:50px auto;
+    padding:20px;
+    border:2px solid green;
+    text-align:center;
+}
+.box h2{
+    height:35px;
+    line-height:35px;
+    font-size:16px;
+    background-color: green;
+    color:#fff;
+}
+.con{
+    height:300px;
+}
+.box h2,.box ul{
+    overflow:hidden;
+}
+.box h2 span,.con li span{
+    float: left;
+    width:200px;
+    height:100%;
+    text-align: center;
+}
+.con li{
+    height:30px;
+    line-height:30px;
+    cursor: pointer;
+}
+.con li:nth-child(even){
+    background-color:#eee;
+}
+.con li:hover{
+    background-color:#e0f2be;
+}
+.page {
+    display: inline-block;
+    margin-top: 10px;
+    height:22px;
+    line-height:22px;
+}
+.page span,.page ul,.page input,.page li{
+    float: left;
+    height:20px;
+    line-height:20px;
+    font-size:12px;
+    text-align: center;
+    border:1px solid green;
+    margin-left: 3px;
+}
+.page ul{
+    border:none;
+    height:22px;
+}
+.page span,.page input{
+    width:60px;
+}
+.page li{
+    width:20px;
+}
+.page li.bg{
+    background-color:green;
+    color:#fff;
+}
+.box2{
+    position: absolute;
+    left:50%;
+    top: 50%;
+    width:200px;
+    height:200px;
+    margin-left:-100px;
+    margin-top:-100px;
+    border:2px solid green;
+}
+.box2 li{
+    height:50px;
+    line-height:50px;
+}
+.box2 li:nth-child(even){
+    background-color:#eee;
+}
+.box2 li span{
+    float: left;
+    width:100px;
+    text-align:center;
+}
+

@@ -1,0 +1,21 @@
+#box{
+    width: 1000px;
+    height: 40px;
+    line-height: 40px;
+    margin:100px auto;
+    border: 2px solid #ccc;
+    padding: 10px;
+    background: lightgreen;
+}
+#wrap{
+    white-space: nowrap;
+    overflow: hidden;
+}
+#conBegin{
+    display: inline-block;
+}
+#conBegin .tips{
+    color: red;
+    font-size: 18px;
+    font-weight: bold;
+}

@@ -1,0 +1,10 @@
+[{
+    "img": "img/1.jpg",
+    "desc": "2016年全新的JavaScript培训"
+}, {
+    "img": "img/2.jpg",
+    "desc": "2016年全新的JavaScript培训"
+}, {
+    "img": "img/3.jpg",
+    "desc": "2016年全新的JavaScript培训"
+}]

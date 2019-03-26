@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <title>事件委托案例</title>
+    <link rel="stylesheet" type="text/css" href="../comment/rest.css">
+    <style>
+    input{
+        display: block;
+    }
+    html, body{
+        width: 100%;
+        height: 100%;
+        border-top:1px solid transparent;/*解决body 距离顶部20px  */ 
+    }
+    #box{
+        margin: 20px auto;
+        width: 500px;       
+    }
+    #box input{
+        width: 300px;
+        height: 35px;
+        padding: 0 10px;
+        border: 1px solid green;
+    }
+    #box ul{
+        position: relative;
+        top:-1px;
+        border: 1px solid green;
+    }
+     #box ul li,  #box ul li a{
+        height: 35px;
+        line-height: 35px;
+     }
+     #box ul li a{
+        padding: 0 10px;
+     }
+     #box ul li a:hover{
+        background-color: #ccc;
+     }
+    </style>
+</head>
+<body>
+   <div id="box">
+       <input type="text" id="searchInp">
+       <ul id="searchUl" style="display:none">
+           <li><a href="javascript:;" target="_blank" rel="noopener">随时随地发现新鲜事！</a></li>
+           <li><a href="javascript:;" target="_blank" rel="noopener">随时随地发现新鲜事！</a></li>
+           <li><a href="javascript:;" target="_blank" rel="noopener">了解每一个幕后故事。</a></li>
+           <li><a href="javascript:;" target="_blank" rel="noopener">分享你想表达的，</a></li>
+           <li><a href="javascript:;" target="_blank" rel="noopener">让全世界都能听到你的心声!</a></li>
+       </ul>
+   </div>
+</body>
+</html>
+<!-- <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+ --><script type="text/javascript">
+   // 显示： 1》 在文本框获取焦点，并且文本框中有内容的时候
+   // 2》在本文中操作内容（输入/删除）,如果内容没有清空，我们就显示，否则就隐藏。
+   // 隐藏：
+   // 1》 点击页面中除了box 以外的区域隐藏
+   // 2》 点击searchList中的列表隐藏，还需要把列表中的内容放到文本框中
+   var box = document.getElementById("box");
+   var searchInp = document.getElementById('searchInp');
+   var searchList = document.getElementById('searchUl');
+   console.log(searchInp)
+   // 不管是获取焦点onfocus 还是在里面编辑内容onkeyup,都是内容显示，没有内容隐藏
+   searchInp.onfocus = searchInp.onkeyup = function (){
+           //获取文本框中的内容，并清除首位空格
+        var val= this.value.replace(/^ +| +$/g,"");
+        searchList.style.display = val.length>0 ?"block":"none";
+   };
+   document.body.onclick = function(e){
+        e = e || window.event;
+        e.target = e.target || e.srcElement;
+        searchList.style.display ="none";
+        //如果事件源是#searchUl 下的a标签，我们让searchUl隐藏，并把当前点击A标签的内容放到文本框内
+        if(e.target.tagName.toLowerCase()==="a"&&e.target.parentNode.parentNode.id ==="searchUl"){
+            searchList.style.display ="none";
+            searchInp.value = e.target.innerHTML;
+            return;
+        }
+        // // 如果事件源是文本框
+        // if(e.target.id === searchInp){
+        //     return;
+        // }
+        searchList.style.display ="none";
+    }
+   // 我们可以阻止一个容器中某写特殊的元素，我们让其不在委托范围内，我们只需要把这些不需要事件委托的阻止冒泡传播
+    searchInp.onclick = function(e){
+        e = e|| window.event;
+        e.stopPropagation ? e.stopPropagation():e.cancelBunnle = true;
+    }
+</script>

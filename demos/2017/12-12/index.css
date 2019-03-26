@@ -1,0 +1,35 @@
+.box{
+   width:500px;
+   margin: 0 auto;
+}
+.box ul{
+    position:relative;
+    top:1px;
+    overflow: hidden;
+}
+.box ul li {
+    float: left;
+    width:100px;
+    height:30px;
+    margin-right: 10px;
+    line-height: 30px;
+    text-align: center;
+    border:1px solid green;
+    cursor:pointer;
+}
+.box ul li.select{
+    border-bottom-color: lightblue;
+    background:lightblue;
+}
+.box div{
+    display: none;
+    width:500px;
+    height:200px;
+    background:lightblue;
+    border:1px solid green;
+    text-align:center;
+    line-height:200px;
+}
+.box div.select{
+    display:block;
+}

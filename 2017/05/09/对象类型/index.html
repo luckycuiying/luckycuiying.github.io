@@ -1,0 +1,69 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.8.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>对象类型 | cuiying.li</title><link rel="stylesheet" type="text/css" href="//fonts.neworld.org/css?family=Source+Code+Pro"><link rel="stylesheet" type="text/css" href="/css/style.css?v=2.0.2"><link rel="stylesheet" type="text/css" href="/css/highlight.css?v=2.0.2"><link rel="Shortcut Icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">对象类型</h1><a id="logo" href="/.">cuiying.li</a><p class="description"></p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div><div id="search-form"><div id="result-mask" class="hide"></div><label><input id="search-key" type="text" autocomplete="off" placeholder="search"></label><div id="result-wrap" class="hide"><div id="search-result"></div></div><div class="hide"><template id="search-tpl"><div class="item"><a href="/{path}" title="{title}"><div class="title">{title}</div><div class="time">{date}</div><div class="tags">{tags}</div></a></div></template></div></div></div><div id="layout" class="layout-g"><div class="layout-l"><div class="content_container"><div class="post"><h1 class="post-title">对象类型</h1><div class="post-meta"><a href="/2017/05/09/对象类型/#comments" class="comment-count"></a><p><span class="date">May 09, 2017</span><span><i id="busuanzi_container_page_pv"><i id="busuanzi_value_page_pv"></i><i>点击</i></i></span></p></div><div class="post-content"><h4 id="对象类型"><a href="#对象类型" class="headerlink" title="对象类型"></a>对象类型</h4><p>可以创建并使用的对象有三种：本地对象和内置对象和诉诸对象。</p>
+<h4 id="本地对象"><a href="#本地对象" class="headerlink" title="本地对象"></a>本地对象</h4><p>本地对象简单来说就是定义的类（引用类型）它包括：</p>
+<ul>
+<li>Object</li>
+<li>Function</li>
+<li>Array</li>
+<li>String String </li>
+</ul>
+<ul>
+<li><p>对象是 String 原始类型的对象表示法，它是以下方式创建的：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> oStringObject = <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">"hello world"</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>String 对象的 valueOf() 方法和 toString() 方法都会返回 String 类型的原始值：</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alert(oStringObject.valueOf() == oStringObject.toString()); <span class="comment">//输出 "true"</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>length 属性<br>String 对象具有属性 length，它是字符串中的字符个数：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> oStringObject = <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">"hello world"</span>);</span><br><span class="line">alert(oStringObject.length);    <span class="comment">//输出 "11"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>charAt() 和 charCodeAt() 方法</p>
+<blockquote>
+<p>首先，两个方法 charAt() 和 charCodeAt() 访问的是字符串中的单个字符。这两个方法都有一个参数，即要操作的字符的位置。</p>
+</blockquote>
+</li>
+<li><p>concat() 方法<br>接下来是 concat() 方法，用于把一个或多个字符串连接到 String 对象的原始值上。该方法返回的是 String 原始值，保持原始的 String 对象不变：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> oStringObject = <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">"hello "</span>);</span><br><span class="line"><span class="keyword">var</span> sResult = oStringObject.concat(<span class="string">"world"</span>);</span><br><span class="line">alert(sResult);     <span class="comment">//输出 "hello world"</span></span><br><span class="line">alert(oStringObject);   <span class="comment">//输出 "hello "</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>indexOf() 和 lastIndexOf() 方法<br>indexOf() 开头起始值0 和 lastIndexOf()从尾部开始 方法返回的都是指定的子串在另一个字符串中的位置，如果没有找不到子串，则返回 -1。</p>
+</li>
+<li><p>localeCompare() 方法</p>
+</li>
+<li>slice() 和 substring()</li>
+</ul>
+<ul>
+<li>转换大小写</li>
+</ul>
+<ul>
+<li>toLowerCase()</li>
+<li>toLocaleLowerCase()</li>
+<li>toUpperCase()</li>
+<li>toLocaleUpperCase()</li>
+</ul>
+<ul>
+<li>Boolean</li>
+<li>Number<ul>
+<li>Number处理数值的专用方法：<blockquote>
+<p>toFixed() 方法返回的是具有指定位数小数的数字的字符串表示。例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> oNumberObject = <span class="keyword">new</span> <span class="built_in">Number</span>(<span class="number">68</span>);</span><br><span class="line">alert(oNumberObject.toFixed(<span class="number">2</span>));  <span class="comment">//输出 "68.00"</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<p>在这里，toFixed() 方法的参数是 2，说明应该显示两位小数。该方法返回 “68.00”，空的字符串位由 0 来补充。对于处理货币的应用程序，该方法非常有用。toFixed() 方法能表示具有 0 到 20 位小数的数字，超过这个范围的值会引发错误。</p>
+<ul>
+<li>Date</li>
+<li>RegExp</li>
+<li>Error</li>
+<li>EvalError</li>
+<li>RangeError</li>
+<li>ReferenceError</li>
+<li>SyntaxError</li>
+<li>TypeError</li>
+<li>URIError<br>引用类型通常叫做类（class）。</li>
+</ul>
+<h3 id="Object-create-创建一个新的对象，但是还要把proObj-作为这个对象的原型"><a href="#Object-create-创建一个新的对象，但是还要把proObj-作为这个对象的原型" class="headerlink" title="Object.create() 创建一个新的对象，但是还要把proObj 作为这个对象的原型"></a>Object.create() 创建一个新的对象，但是还要把proObj 作为这个对象的原型</h3><p>语法：Object.create(proObj) </p>
+</div><div class="tags"></div><div class="post-share"><div class="social-share"><span>分享到:</span></div></div><div class="post-nav"><a href="/2017/05/09/Array引用类型详解/" class="pre">Array引用类型详解</a><a href="/2017/05/08/面向对象/" class="next">面向对象</a></div><div id="comments"></div></div></div></div><div class="layout-r"><div id="sidebar"><div class="search-pla"></div><div id="toc" class="widget"><div class="widget-title"><i class="fa fa-fei">文章目录</i></div><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#对象类型"><span class="toc-text">对象类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#本地对象"><span class="toc-text">本地对象</span></a></li></ol><li class="toc-item toc-level-3"><a class="toc-link" href="#Object-create-创建一个新的对象，但是还要把proObj-作为这个对象的原型"><span class="toc-text">Object.create() 创建一个新的对象，但是还要把proObj 作为这个对象的原型</span></a></li></div><div class="widget"><div class="widget-title"><i class="fa fa-xie"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/03/06/图片延迟加载和懒加载/">图片延迟加载和懒加载</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/05/Redux/">Redux</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/04/React里的高阶组件/">React里的高阶组件</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/03/一道事件循环列面试题/">一道事件循环列面试题</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/24/常见跨域原理/">常见跨域原理</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/21/本地缓存/">本地缓存</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/19/http协议缓存/">http协议缓存机制</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/04/es6-class/">ES6 里面的类</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/04/Symbol在对象里面的作用/">Symbol在对象里面的作用</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/01/事件冒泡面试题/">事件冒泡面试题</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-gui"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">1</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-biao"> 标签</i></div><div class="tagcloud"><a href="/tags/css-基础/" style="font-size: 15px;">css 基础</a> <a href="/tags/js基础/" style="font-size: 15px;">js基础</a> <a href="/tags/js-基础/" style="font-size: 15px;">js 基础</a> <a href="/tags/js/" style="font-size: 15px;">js</a> <a href="/tags/JavaScript/" style="font-size: 15px;">JavaScript</a> <a href="/tags/javascript/" style="font-size: 15px;">javascript</a> <a href="/tags/React/" style="font-size: 15px;">React</a> <a href="/tags/jq基础/" style="font-size: 15px;">jq基础</a> <a href="/tags/css基础/" style="font-size: 15px;">css基础</a> <a href="/tags/css/" style="font-size: 15px;">css</a> <a href="/tags/计算机基础知识/" style="font-size: 15px;">计算机基础知识</a> <a href="/tags/工具使用技巧/" style="font-size: 15px;">工具使用技巧</a> <a href="/tags/javaScript/" style="font-size: 15px;">javaScript</a> <a href="/tags/工具/" style="font-size: 15px;">工具</a> <a href="/tags/面试题/" style="font-size: 15px;">面试题</a> <a href="/tags/前端开发/" style="font-size: 15px;">前端开发</a> <a href="/tags/优化技巧/" style="font-size: 15px;">优化技巧</a> <a href="/tags/js-继基础/" style="font-size: 15px;">js 继基础</a> <a href="/tags/面试题（-）/" style="font-size: 15px;">面试题（-）</a> <a href="/tags/面试总结/" style="font-size: 15px;">面试总结</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-archive"> 归档</i></div><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-you"> 友情链接</i></div><ul></ul><a href="http://www.example1.com/" title="site-name1" target="_blank">site-name1</a><ul></ul><a href="http://www.example2.com/" title="site-name2" target="_blank">site-name2</a><ul></ul><a href="http://www.example3.com/" title="site-name3" target="_blank">site-name3</a></div></div></div></div><a id="totop" href="#top"></a><div id="footer"><div class="footer-info"><p><a href="/baidusitemap.xml">网站地图</a> |  <a href="/atom.xml">订阅本站</a> |  <a href="/about/">联系博主</a></p><p>本站总访问量：<i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>次，
+本站总访客数:<i id="busuanzi_container_site_uv"><i id="busuanzi_value_site_uv"></i></i>人</p><p><span> Copyright &copy;<a href="/." rel="nofollow">李翠英.</a></span><span> Theme by<a rel="nofollow" target="_blank" href="https://github.com/chaooo/hexo-theme-BlueLake"> BlueLake.</a></span><span> Count by<a href="http://busuanzi.ibruce.info/"> busuanzi.</a></span><span> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a></span></p></div></div></div><script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script type="text/javascript" src="/js/search.json.js?v=2.0.2"></script><script type="text/javascript" src="/js/toctotop.js?v=2.0.2" async></script><link rel="stylesheet" type="text/css" href="//css/share.css"><script type="text/javascript" src="//js/social-share.js" charset="utf-8"></script><script type="text/javascript" src="//js/qrcode.js" charset="utf-8"></script></body></html>

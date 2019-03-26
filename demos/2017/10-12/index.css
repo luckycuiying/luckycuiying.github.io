@@ -1,0 +1,107 @@
+#lineTab{
+    width: 720px;
+    margin: 0 auto;
+}
+#lineTab .current{
+    display:block;
+}
+.tabTitle{
+    border-bottom: 2px solid #1badb6;
+    margin-bottom: 20px;
+}
+.tabTitle .title{
+    font-size: 20px;
+    font-family: "microsoft yahei";
+    color: #1badb6;
+}
+.tabTitle .tabItem{
+    float: right;
+}
+.tabTitle a{
+    display:inline-block;
+    padding: 0 12px;
+    height:23px;
+    line-height:23px;
+}
+.tabTitle span{
+    display:inline-block;
+    height:20px;
+    margin: 0 10px;
+}
+.tabTitle .active,.tabTitle a:hover{
+    background-color:#34b9c2;
+    color: #fff;
+    border-radius: 11px;
+}
+.tabCt{display:none; height:336px; overflow:hidden;}
+.tabCt ul{margin-left:-10px;}
+
+.tabCt .item{
+    float:left;
+    width:175px;
+    height:336px;
+    margin-left: 10px;
+    overflow:hidden;
+    background-color:#fafafa;
+}
+.tabCt .item .imgBox{
+    position: relative;
+    text-align: center;
+}
+.tabCt .imgBox img{
+    width:175px;
+    height:175px;
+    overflow: hidden;   
+}
+.tabCt .imgBox .tit{
+    position:absolute;
+    left:0;
+    bottom: 0;
+    display:inline-block;
+    width:100%;
+    height:35px;
+    color:#fff;
+    line-height: 35px;
+}
+.tabCt .imgBox .bg{
+    background: #000;
+    opacity: .6;
+}
+.tabCt .inforBox{
+    padding:10px;
+    line-height:20px;
+}
+.tabCt .inforBox .item_route{
+    position:relative;
+}
+.tabCt .inforBox .r_l{
+    position:absolute;
+    left:0;
+    width:70px;
+}
+.tabCt .inforBox .r_r{
+    position:absolute;
+    left:70px; 
+    max-height: 40px;
+    overflow:hidden; 
+}
+.tabCt .inforBox .r_r a{
+    margin-right: 5px;
+    color: #1badb6;
+}
+
+.tabCt .current{
+    width:350px;
+}
+.tabCt .current img{
+    width:350px;
+}
+.tabCt .current .inforBox{
+    line-height:24px;
+}
+.group2 .item{
+    width:350px;
+}
+.group2 .item img{
+    width:350px;
+}

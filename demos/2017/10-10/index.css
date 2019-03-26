@@ -1,0 +1,27 @@
+#parent{
+    width: 200px;
+    height:200px;
+    text-align: center;
+    line-height: 3;
+    background: green;
+}
+#child{
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    background: orange;
+}
+#parent2{
+    margin-top: 50px;
+    width: 200px;
+    height:200px;
+    text-align: center;
+    line-height: 3;
+    background: #ccc;
+}
+#child2{
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    background: pink;
+}

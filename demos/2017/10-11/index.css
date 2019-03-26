@@ -1,0 +1,79 @@
+#slideShow{
+    position: relative;
+    margin:0 auto;
+    width: 720px;
+    height:400px;
+    overflow: hidden;
+}
+
+#slideShow #bigPic .imgbox{
+    // display: inline-block;
+    float:left;
+}
+#slideShow #bigPic img{
+    float:left;
+    width:720px;
+    height:400px;
+}
+#slideShow #smallPic{
+    position:absolute;
+    left:0;
+    bottom:0;
+    height:58px;
+    width:720px;
+}
+#slideShow #smallPic .bg_mask{
+    height:58px;
+    background: #000;
+    opacity: .6;
+}
+#slideShow #smallPic ul{
+ position:absolute;
+ top:5px;
+ right: 0;
+}
+#slideShow #smallPic .item{
+    position:relative;
+    float:left;
+    width:70px;
+    height:48px;
+    margin-right: 5px;
+    overflow:hidden;
+    cursor:pointer;
+}
+
+#slideShow #smallPic .item .item_mask{
+    position:absolute;
+    left:0;
+    top:0;
+    width:70px;
+    height:48px;
+    display:block;
+    background:#fff;
+    opacity:.6;
+}
+#slideShow #smallPic .current .item_mask{
+    display:none;
+}
+#slideShow #smallPic .item .more{
+    background-color: #000000;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 70px;
+    height: 48px;
+    z-index: 50;
+    opacity: 0.5;
+}
+#slideShow #smallPic .item .more .item_more{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 70px;
+    height: 20px;
+    padding-top: 17px;
+    color: #ffffff;
+    text-align: center;
+    z-index: 20;
+    overflow: hidden;
+}

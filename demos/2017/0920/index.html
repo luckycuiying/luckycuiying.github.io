@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <title>demo</title>
+    <link rel="stylesheet" type="text/css" href="../comment/rest.css"></head>
+    <link rel="stylesheet" type="text/css" href="index.css">
+<body>
+
+   <div id="box">
+       利用对象键值对方法  原理：
+        1> 把数组中的每一项当做一个对象的属性名和属性值存储起来。
+        2> 但是在每一次存储之前，我们首先判断当前这一项（n） 是否在对象中已经存在了 obj[n]
+        3> 如果值是N 说明对象已经存在这一项了，也就说明了N在之前数组中已经出现过一次N了，证明当前值已经重复了，我们在数组中删除这一项。
+        4> 如果值是undefined  说明对象中还没有这一项，也就是当前这一项还没有在数组中出现过，我们就把当前这一项当做对象的属性名和属性值存储进去即可
+   </div>
+   <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+    <script type="text/javascript" src="index.js"></script>
+</body>
+</html>

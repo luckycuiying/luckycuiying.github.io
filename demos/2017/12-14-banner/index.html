@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <title>淡进淡出banner图效果</title>
+    <link rel="stylesheet" type="text/css" href="../comment/rest.css">
+    <link rel="stylesheet" type="text/css" href="index.css">
+</head>
+<body>
+  <div class="banner" id="banner">
+    <ul class="inner"> 
+    </ul>
+    <ul class="bannerTips">
+
+    </ul>
+    <a href="javascript:;" class="banner-left" target="_blank" rel="noopener"></a>
+    <a href="javascript:;" class="banner-right" target="_blank" rel="noopener"></a>
+  </div>
+  <div class="banner" id="banner2">
+    <ul class="inner"> 
+    </ul>
+    <ul class="bannerTips">
+
+    </ul>
+    <a href="javascript:;" class="banner-left" target="_blank" rel="noopener"></a>
+    <a href="javascript:;" class="banner-right" target="_blank" rel="noopener"></a>
+  </div>
+    <script type="text/javascript" src="../comment/utils.js"></script>
+    <script type="text/javascript" src="../comment/tween.js"></script>
+    <script type="text/javascript" src="../comment/cxSlide.js"></script>
+    <script>
+        banner1 = new AutoBanner("banner","banner.txt",1000);
+        banner2 = new AutoBanner("banner2","banner2.txt",3000);
+    </script>
+</body>
+</html>

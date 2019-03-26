@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <title>事件委托案例</title>
+    <link rel="stylesheet" type="text/css" href="../comment/rest.css">
+    <style>
+        .box{
+            position: relative;
+            width: 448px;
+            margin: 20px auto;
+        }
+        .box img{
+            width: 100px;
+            float: left;
+            margin-right: 10px;
+            height: 75px;
+            border: 1px solid green;
+            cursor: pointer;
+        }
+        #mark{
+            display: none;
+            position: absolute;
+            top:0;
+            left: 0;
+            width: 400px;
+            height: 300px;
+            border: 1px solid blue;
+            z-index: 10;    
+        }
+        #mark img{
+            float: inherit;
+            margin-left: 0;
+            border: none;
+            width: 100%;
+            height: 100%;
+
+        }
+    </style>
+</head>
+<body>
+   <div class="box">
+    <img src="/assets/blogimg/tip/apple_1.jpg" alt bigimg="/assets/blogimg/tip/apple_1_bigger.jpg">
+    <img src="/assets/blogimg/tip/apple_2.jpg" alt bigimg="/assets/blogimg/tip/apple_2_bigger.jpg">
+    <img src="/assets/blogimg/tip/apple_3.jpg" alt bigimg="/assets/blogimg/tip/apple_3_bigger.jpg">
+    <img src="/assets/blogimg/tip/apple_4.jpg" alt bigimg="/assets/blogimg/tip/apple_4_bigger.jpg">
+    <div id="mark"><img src="/assets/blogimg/tip/apple_1_bigger.jpg" alt></div>
+   </div>
+</body>
+</html>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+<script type="text/javascript">
+    $(function(){
+        var $box = $(".box"),$mark = $("#mark");
+        var $boxOffest = $box.offset();
+        var $boxImgs = $box.children('img');
+        $boxImgs.bind('mouseover',function(e){
+            e = e|| window.event;
+            e.target = e.target||e.srcElement;
+            var left = e.clientX - $boxOffest.left+10;
+            var top = e.clientY -$boxOffest.top+10;
+            $mark.stop().show(500).css({left:left,top:top}).find("img").attr("src",e.target.getAttribute("bigImg"))
+        }).bind('mousemove',function(e){
+            e = e|| window.event;
+            e.target = e.target||e.srcElement;
+            var left = e.clientX - $boxOffest.left+10;
+            var top = e.clientY -$boxOffest.top+10;
+            $mark.css({left:left,top:top});
+        }).bind('mouseout',function(e){
+           $mark.stop().hide()
+        })
+
+    })
+</script>

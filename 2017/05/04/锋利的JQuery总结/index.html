@@ -1,0 +1,86 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.8.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>锋利的JQuery总结（一） | cuiying.li</title><link rel="stylesheet" type="text/css" href="//fonts.neworld.org/css?family=Source+Code+Pro"><link rel="stylesheet" type="text/css" href="/css/style.css?v=2.0.2"><link rel="stylesheet" type="text/css" href="/css/highlight.css?v=2.0.2"><link rel="Shortcut Icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">锋利的JQuery总结（一）</h1><a id="logo" href="/.">cuiying.li</a><p class="description"></p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div><div id="search-form"><div id="result-mask" class="hide"></div><label><input id="search-key" type="text" autocomplete="off" placeholder="search"></label><div id="result-wrap" class="hide"><div id="search-result"></div></div><div class="hide"><template id="search-tpl"><div class="item"><a href="/{path}" title="{title}"><div class="title">{title}</div><div class="time">{date}</div><div class="tags">{tags}</div></a></div></template></div></div></div><div id="layout" class="layout-g"><div class="layout-l"><div class="content_container"><div class="post"><h1 class="post-title">锋利的JQuery总结（一）</h1><div class="post-meta"><a href="/2017/05/04/锋利的JQuery总结/#comments" class="comment-count"></a><p><span class="date">May 04, 2017</span><span><i id="busuanzi_container_page_pv"><i id="busuanzi_value_page_pv"></i><i>点击</i></i></span></p></div><div class="post-content"><h3 id="一，JQuery的环境配置"><a href="#一，JQuery的环境配置" class="headerlink" title="一，JQuery的环境配置"></a>一，JQuery的环境配置</h3><p>1,JQuery分为压缩版和非压缩版<br>2,$=JQuery<br>3,$(document).ready(function(){});相当于$(function(){});<br>4,//注释用<br>5,DOM对象与JQuery对象的相互转换<br>    DOM对象转成jQuery对象 用$()把DOM对象包装起来就变成jQuery对象了。例如：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> v = <span class="built_in">document</span>.getElementById(<span class="string">'v'</span>);</span><br><span class="line"><span class="keyword">var</span> $v = $(v);即可</span><br></pre></td></tr></table></figure></p>
+<p>jQuery对象转换成DOM对象有两种方法即:[index]和.get(index)<br>    ① jQuery是数组对象可以通过[index]的方法来得到相对应的DOM对象。<br>    例如：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> $v = $(<span class="string">'#v'</span>);</span><br><span class="line"><span class="keyword">var</span> v =$v[<span class="number">0</span>];</span><br></pre></td></tr></table></figure></p>
+<p> ②jQuery本身提供的.get(index)方法得到相应的DOM对象<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> $v = (<span class="string">'#v'</span>);</span><br><span class="line"><span class="keyword">var</span> v = $v.get(<span class="number">0</span>);</span><br></pre></td></tr></table></figure></p>
+<h4 id="DOM对象才能使用DOM的方法，jQuery对象是不能使用DOM中的方法。"><a href="#DOM对象才能使用DOM的方法，jQuery对象是不能使用DOM中的方法。" class="headerlink" title="DOM对象才能使用DOM的方法，jQuery对象是不能使用DOM中的方法。"></a>DOM对象才能使用DOM的方法，jQuery对象是不能使用DOM中的方法。</h4><p>6,与其他JS库冲突的解决(主要是$符号谁生效的问题)<br>    【1】在其他库之后导入<br>        使用前：先调用jQuery.noconflict();——$会被释放给jQuery库。<br>    【2】在其他库之前导入<br>        就直接使用$()就好N了。</p>
+<h3 id="二-jQuery选择器"><a href="#二-jQuery选择器" class="headerlink" title="二, jQuery选择器"></a>二, jQuery选择器</h3><p>1, Css是找到元素后添加样式，jQuery是找到元素后添加行为。<br>2, jQuery选择器的优势<br>    【1】简洁的书写<br>    【2】支持CSS1到CSS3的选择器<br>    【3】完善的处理机制，即使元素不存在也不会像JS一样报错<br>3, 判断某元素是否存在的方法<br>    if($(‘#tt’).length&gt;0)或者if($(“#tt”)[0])  不是要用if($(‘#tt’)!=null),因为永远不为空</p>
+<p>4, 原生JS中查找或获取元素的方法<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">getElementById(<span class="string">"id"</span>)  <span class="comment">//如 id="one"</span></span><br><span class="line">getElementByName(<span class="string">"name"</span>) <span class="comment">//如多选按钮的 name="check"</span></span><br><span class="line">getElementByTag(<span class="string">"tagname"</span>)  <span class="comment">//如&lt;a&gt;、&lt;span&gt;等html标签</span></span><br></pre></td></tr></table></figure></p>
+<p>5, 选择器的分类</p>
+<blockquote>
+<ul>
+<li>基本选择器</li>
+<li>层次选择器</li>
+<li>过滤选择器</li>
+<li>表单选择器</li>
+</ul>
+</blockquote>
+<p>6, 基本选择器</p>
+<p><1> $(‘#div’) id选择器</1></p>
+<p><2> $(‘.div’) class选择器</2></p>
+<p><3> $(‘p’) 标签选择器</3></p>
+<p><4> $(‘*’) 选择所有元素</4></p>
+<p><5>$(“div,span,.myclass”) 组合</5></p>
+<p>7、层次选择器</p>
+<p><1>$(“div span”)  选择div中  span后代元素</1></p>
+<p><2>$(“div &gt;span”) 选择div中span的子元素</2></p>
+<p><3>$(“.one + div”)选one的下一个div元素————相当于$(“.one”).next(“div”)</3></p>
+<p><4>$(“#two ~ div”) 选id为two的后面所有<div>兄弟元素————相当于$(“#two”).nextAll(“div”);</div></4></p>
+<p>8、过滤选择器</p>
+<p><1>$(“ div:first”) 所有div元素中第一个div </1></p>
+<p><2>$(“ div:last”) 所有div元素中最后一个div</2></p>
+<p><3>$(“ input:not(.myclass)”) 不是 class为myclass 的<input>元素</3></p>
+<p><4>$(“ input:even”) 索引为偶数的input</4></p>
+<p><5>$(“ input:odd”)索引为奇数的input</5></p>
+<p><6>$(“input:eq(1)”) 索引为1的input——————index从0开始</6></p>
+<p><7>$(“input:gt(1)”)  索引大于1的input</7></p>
+<p><8>$(“input :lt(1)”) 索引小于1的input</8></p>
+<p><9>$(“:header”)  所有的<h1> <h2> <h3>……</h3></h2></h1></9></p>
+<p><10>$(“div:animated”) 正在执行动画的<div></div></10></p>
+<p><11>$(“div:contains(‘我’)”)   含有文本‘我’的div</11></p>
+<p><12>$(“div:empty”)  空的div</12></p>
+<p><13>$(“ div :has(p)”)   含有<p>的<div></div></p>
+<p><14>$(“div:parent”)       含有子元素的<div></div></14></p>
+<p><15> $(“:hidden”)    所有不可见元素</15></p>
+<p><16>$(“div:visible”)   所有的可见的<div></div></16></p>
+<p><17>$(“ div[id]”)      拥有id属性的<div></div></17></p>
+<p><18>$(“ div[title=test]”)    title为test的<div></div></18></p>
+<p><19> $ (“div [title!=test]”) title不为test的<div></div></19></p>
+<p><20> $(“ div[title^=test]”)    title以“test”开头的div</20></p>
+<p><21>$ (“div [title$=test]”)    title以“test”结束的div</21></p>
+<p><22>$(“ div[title*=test]”)          title含有test的div</22></p>
+<p><23>$(“div[id][title$=test]”)     组合多条件选择</23></p>
+<p><24>:nth-child(index/even/odd/equation)  ————————index从1开始</24></p>
+<p><25>:first-child</25></p>
+<p><26>:last-child</26></p>
+<p><27> :only-child</27></p>
+<p><28> $(“#form1 :enabled”)            id为“form1”的表单内所有可用的元素</28></p>
+<p><29>$(“#form2:disable”)</29></p>
+<p><30>$(“input:checked”)         所有被选中的<input>元素</30></p>
+<p><31>$(“select:selected”)       所有被选中的<select>元素</select></31></p>
+<p><32>$(“:input”)                   所有<input> <textarea></textarea><select></select><button> 元素</button></32></p>
+<p><33>$(“:text”)                    所有单行文本框</33></p>
+<p><34>$(“:password”)           所有密码框</34></p>
+<p><35>$(“:radio”)                   所有单选框 </35></p>
+<p><36>$(“:checkbox”)             所有复选框</36></p>
+<p><37>$(“:submit”)               所有的提交按钮</37></p>
+<p><38>$(“:image”)          所有图像按钮</38></p>
+<p><39>$(“:reset”)              所有重置按钮</39></p>
+<p><40>$(“:button”)    所有按钮</40></p>
+<p><41>$(“:file”)            所有上传域</41></p>
+<p><42>$(“:hidden”)            所有不可见元素</42></p>
+<p> 9、.click()事件中添加return false 可以使链接不跳转</p>
+<p>10、添加与去除样式<br>    removeClass()<br>    addClass()<br>    //这两个可以用一个 <strong>toggleClass()</strong> 代替</p>
+<p>11、要时刻记住，如果用户禁用了javascript后，你的页面是不能正常处理</p>
+<p>12、toggle()方法交替一组鼠标点击的动作</p>
+<p>hover()方法交替一组鼠标滑过的动作</p>
+<p>13、end() 方法可以返回到上一个可以操作的元素</p>
+<p>14 .closest(selector) :从元素本身开始，在DOM 树上逐级向上级元素匹配，并返回最先匹配的祖先元素。<br>    selector: 匹配元素的选择器字符串。，例如:标签ul，li, p, div ….; class ,id 等。 </p>
+<h5 id="closest-selector-context"><a href="#closest-selector-context" class="headerlink" title=".closest( selector [, context ] )"></a>.closest( selector [, context ] )</h5><p>   context 如果提供这个参数，那么在这个DOM元素内查找匹配的元素，可以使用这个参数减小查找范围，如果在这个在这个DOM元素内没有查找到匹配的元素，那么返回空的jQuery对象。可选参数</p>
+<h4 id="closest-jQuery-object"><a href="#closest-jQuery-object" class="headerlink" title=".closest( jQuery object )"></a>.closest( jQuery object )</h4><pre><code>jQuery object
+类型: jQuery
+一个用于匹配元素的jQuery对象。
+</code></pre><h5 id="closest-element"><a href="#closest-element" class="headerlink" title=".closest( element )"></a>.closest( element )</h5><pre><code>element
+类型: Element
+一个用于匹配元素的DOM元素。
+</code></pre><p><img src="/assets/blogimg/closest.png" alt="图片位置"></p>
+<h3 id="15-index-匹配的元素中搜索给定元素的索引值，从0开始计数。"><a href="#15-index-匹配的元素中搜索给定元素的索引值，从0开始计数。" class="headerlink" title="15, .index() 匹配的元素中搜索给定元素的索引值，从0开始计数。"></a>15, .index() 匹配的元素中搜索给定元素的索引值，从0开始计数。</h3></13></p></div><div class="tags"></div><div class="post-share"><div class="social-share"><span>分享到:</span></div></div><div class="post-nav"><a href="/2017/05/08/面向对象/" class="pre">面向对象</a><a href="/2017/04/21/git-基础/" class="next">git 基础</a></div><div id="comments"></div></div></div></div><div class="layout-r"><div id="sidebar"><div class="search-pla"></div><div id="toc" class="widget"><div class="widget-title"><i class="fa fa-fei">文章目录</i></div><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一，JQuery的环境配置"><span class="toc-text">一，JQuery的环境配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#DOM对象才能使用DOM的方法，jQuery对象是不能使用DOM中的方法。"><span class="toc-text">DOM对象才能使用DOM的方法，jQuery对象是不能使用DOM中的方法。</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二-jQuery选择器"><span class="toc-text">二, jQuery选择器</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-text">  ……</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text"> ……</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-text">……</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#closest-selector-context"><span class="toc-text">.closest( selector [, context ] )</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#closest-jQuery-object"><span class="toc-text">.closest( jQuery object )</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#closest-element"><span class="toc-text">.closest( element )</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#15-index-匹配的元素中搜索给定元素的索引值，从0开始计数。"><span class="toc-text">15, .index() 匹配的元素中搜索给定元素的索引值，从0开始计数。</span></a></li></ol></li></div><div class="widget"><div class="widget-title"><i class="fa fa-xie"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/03/06/图片延迟加载和懒加载/">图片延迟加载和懒加载</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/05/Redux/">Redux</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/04/React里的高阶组件/">React里的高阶组件</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/03/一道事件循环列面试题/">一道事件循环列面试题</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/24/常见跨域原理/">常见跨域原理</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/21/本地缓存/">本地缓存</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/19/http协议缓存/">http协议缓存机制</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/04/es6-class/">ES6 里面的类</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/04/Symbol在对象里面的作用/">Symbol在对象里面的作用</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/01/事件冒泡面试题/">事件冒泡面试题</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-gui"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">1</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-biao"> 标签</i></div><div class="tagcloud"><a href="/tags/css-基础/" style="font-size: 15px;">css 基础</a> <a href="/tags/js基础/" style="font-size: 15px;">js基础</a> <a href="/tags/js-基础/" style="font-size: 15px;">js 基础</a> <a href="/tags/js/" style="font-size: 15px;">js</a> <a href="/tags/JavaScript/" style="font-size: 15px;">JavaScript</a> <a href="/tags/javascript/" style="font-size: 15px;">javascript</a> <a href="/tags/React/" style="font-size: 15px;">React</a> <a href="/tags/jq基础/" style="font-size: 15px;">jq基础</a> <a href="/tags/css基础/" style="font-size: 15px;">css基础</a> <a href="/tags/css/" style="font-size: 15px;">css</a> <a href="/tags/计算机基础知识/" style="font-size: 15px;">计算机基础知识</a> <a href="/tags/工具使用技巧/" style="font-size: 15px;">工具使用技巧</a> <a href="/tags/javaScript/" style="font-size: 15px;">javaScript</a> <a href="/tags/工具/" style="font-size: 15px;">工具</a> <a href="/tags/面试题/" style="font-size: 15px;">面试题</a> <a href="/tags/前端开发/" style="font-size: 15px;">前端开发</a> <a href="/tags/优化技巧/" style="font-size: 15px;">优化技巧</a> <a href="/tags/js-继基础/" style="font-size: 15px;">js 继基础</a> <a href="/tags/面试题（-）/" style="font-size: 15px;">面试题（-）</a> <a href="/tags/面试总结/" style="font-size: 15px;">面试总结</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-archive"> 归档</i></div><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-you"> 友情链接</i></div><ul></ul><a href="http://www.example1.com/" title="site-name1" target="_blank">site-name1</a><ul></ul><a href="http://www.example2.com/" title="site-name2" target="_blank">site-name2</a><ul></ul><a href="http://www.example3.com/" title="site-name3" target="_blank">site-name3</a></div></div></div></div><a id="totop" href="#top"></a><div id="footer"><div class="footer-info"><p><a href="/baidusitemap.xml">网站地图</a> |  <a href="/atom.xml">订阅本站</a> |  <a href="/about/">联系博主</a></p><p>本站总访问量：<i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>次，
+本站总访客数:<i id="busuanzi_container_site_uv"><i id="busuanzi_value_site_uv"></i></i>人</p><p><span> Copyright &copy;<a href="/." rel="nofollow">李翠英.</a></span><span> Theme by<a rel="nofollow" target="_blank" href="https://github.com/chaooo/hexo-theme-BlueLake"> BlueLake.</a></span><span> Count by<a href="http://busuanzi.ibruce.info/"> busuanzi.</a></span><span> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a></span></p></div></div></div><script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script type="text/javascript" src="/js/search.json.js?v=2.0.2"></script><script type="text/javascript" src="/js/toctotop.js?v=2.0.2" async></script><link rel="stylesheet" type="text/css" href="//css/share.css"><script type="text/javascript" src="//js/social-share.js" charset="utf-8"></script><script type="text/javascript" src="//js/qrcode.js" charset="utf-8"></script></body></html>

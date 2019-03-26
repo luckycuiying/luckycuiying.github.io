@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>练习题</title>
+    <link rel="stylesheet" type="text/css" href="index.css"></head>
+<body>
+    <div class="box">
+       var handle = function(a){
+            var b = 3;
+            var tmp = function(a){
+                b = a + b;
+                return tmp;
+            }
+            tmp.toString = function(){ //自定义toString方法，给alert 用的。因为aler方法会调用浏览器给Obj数据类型的默认toString方法，但是这个handle 方法的是一个函数所以alert（）返回默认toString()是函数本身。所以我们通过自定义toString(),让它返回b 的值。
+                return b;
+            }
+            return tmp;
+    }
+    alert(handle(4)(5)(6)); //14
+</div>
+   <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+    <script type="text/javascript" src="index.js"></script>
+</body>
+</html>

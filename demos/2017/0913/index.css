@@ -1,0 +1,239 @@
+@-webkit-keyframes lovestar {
+    0% {
+        opacity: 0;
+        -moz-transform: translate3d(0, -10px, 0);
+    }
+    50% {
+        opacity: 1;
+        -webkit-transform: translate3d(0, -30px, 0) scale(2, 2);
+    }
+    100% {
+        opacity: 0;
+        transform: translate3d(-15px, 0, 0) scale(.4, .4) rotate(180deg);
+    }
+}
+@-moz-keyframes lovestar {
+    0% {
+        opacity: 0;
+        -moz-transform: translateY(-10px);
+    }
+    50% {
+        opacity: 1;
+        -moz-transform: translate3d(0, -30px, 0) scale(2, 2);
+    }
+    100% {
+        opacity: 0;
+        transform: translate3d(-15px, 0, 0) scale(.4, .4) rotate(180deg);
+    }
+}
+@keyframes lovestar {
+    0% {
+        opacity: 0;
+        transform: translate3d(0, -10px, 0);
+    }
+    50% {
+        opacity: 1;
+        transform: translate3d(0, -30px, 0) scale(2, 2);
+    }
+    100% {
+        opacity: 0;
+        transform: translate3d(-15px, 0, 0) scale(.4, .4) rotate(180deg);
+    }
+}
+.main_info_r {
+    width: 300px;
+    height: 63px;
+    margin:100px auto;
+}
+.main_info_r ul .nav_item {
+    border: solid 1px #fff;
+    border-color: rgba(255, 255, 255, 0.3);
+    background: #999;
+    background: rgba(0, 0, 0, 0.5);
+    background-clip: padding-box;
+    border-radius: 50%;
+    float: right;
+    display: inline;
+    font-size: 14px;
+    cursor: pointer;
+    width: 50px;
+    color: #fff;
+    margin-left: 10px;
+    height: 50px;
+    text-align: center
+}
+.main_info_r ul .nav_item .iconfont {
+    font-family: 'travel_web';
+    display: block;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 28px;
+    margin-bottom: 5px
+}
+.main_info_r ul .nav_item span {
+    display: block
+}
+.main_info_r ul .nav_item .tuijian .text {
+    color: #000;
+}
+.main_info_r ul .nav_item .num {
+    color: #000;
+    font-weight: 900
+}
+.main_info_r ul .nav_item .text {
+    font-weight: 900;
+    font-size: 14px;
+    color: #000;
+    display: none
+}
+.main_info_r ul .nav_item:hover {
+    background: #3cc;
+    border-color: #3cc
+}
+.main_info_r ul .nav_item:hover .num {
+    display: none
+}
+.main_info_r ul .nav_item:hover .text {
+    display: block
+}
+.main_info_r ul .nav_item .e_ops_down {
+    display: none;
+    position: absolute;
+    width: 66px;
+    height: 174px;
+    border: 0;
+    overflow: hidden;
+    z-index: 5
+}
+.main_info_r ul .nav_item .e_ops_down .down_item a {
+    display: block;
+    width: 66px;
+    height: 54px;
+    text-indent: -9999px;
+    margin: 0 auto;
+    background: url('//source.qunarzz.com/site/images/travel/travel_notes/detail/title_hover_bg.png') 0 0 no-repeat
+}
+.main_info_r ul .like {
+    position: relative
+}
+.main_info_r ul .like .add_one {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 28px;
+    font-size: 9px;
+    color: #c00;
+}
+.main_info_r.like .add_num {
+    position: absolute;
+    color: #ff4255;
+    right: 0;
+    top: 0;
+    opacity: 0;
+    font-size: 14px;
+    -webkit-animation: lovestar 1.2s 0s 1 ease normal none;
+    -moz-animation: lovestar 1.2s 0s 1 ease normal none;
+    animation: lovestar 1.2s 0s 1 ease normal none;
+}
+.main_info_r ul .likeCT .iconfont:after {
+    position: relative;
+    top: -1px;
+    content: '\e0e7'
+}
+.main_info_r ul .like:hover .likeCT .iconfont:after {
+    content: '\e0cd'
+}
+.main_info_r ul .comment a {
+    color: #fff
+}
+.main_info_r ul .commentCT .iconfont:after {
+    position: relative;
+    top: 2px;
+    content: '\e0d4'
+}
+.main_info_r ul .comment:hover .commentCT .iconfont:after {
+    content: '\e0e8'
+}
+.main_info_r ul .share {
+    position: relative
+}
+.main_info_r ul .share .sharCT .iconfont:after {
+    font-family: 'travel_web';
+    content: '\e0cf'
+}
+.main_info_r ul .share .e_ops_down {
+    left: -8px;
+    top: 45px
+}
+.main_info_r ul .share .e_ops_down .weibo a {
+    height: 64px
+}
+.main_info_r ul .share .e_ops_down .weibo a:hover {
+    background-position: -132px 0
+}
+.main_info_r ul .share .e_ops_down .weixin a {
+    background-position: 0 -64px
+}
+.main_info_r ul .share .e_ops_down .weixin a:hover {
+    background-position: -132px -64px
+}
+.main_info_r ul .share .e_ops_down .qqzone a {
+    background-position: 0 -118px
+}
+.main_info_r ul .share .e_ops_down .qqzone a:hover {
+    background-position: -132px -118px
+}
+.main_info_r ul .active .e_ops_down {
+    display: block
+}
+.main_info_r ul .view_collected {
+    position: relative
+}
+.main_info_r ul .view_collected .collectCT .iconfont:after {
+    content: '\e0d8'
+}
+.main_info_r ul .view_collected:hover .collectCT .iconfont:after {
+    content: '\e0d7'
+}
+.main_info_r ul .selected {
+    background: #3cc;
+    border-color: #3cc
+}
+.main_info_r ul .selected .likeCT .iconfont:after {
+    content: '\e0cd'
+}
+.main_info_r ul .selected .collectCT .iconfont:after {
+    content: '\e0d7'
+}
+.main_info_r .box_recommend {
+    text-align: right;
+    margin-right: 10px;
+    position: relative
+}
+.main_info_r .box_recommend .tip {
+    position: absolute;
+    top: 26px;
+    right: 0;
+    width: 198px;
+    line-height: 24px;
+    padding: 5px 8px;
+    text-align: left;
+    border: 1px solid #ded6be;
+    background-color: #fffedf;
+    z-index: 500
+}
+.main_info_r .box_recommend .tip .arrow {
+    position: absolute;
+    top: -7px;
+    right: 20px;
+    width: 11px;
+    height: 7px;
+    background: transparent url("//source.qunarzz.com/site/images/travel/finish/icon_tip_arrow.gif") 0 0 no-repeat scroll
+}
+.main_info_r .box_recommend .link_recommend {
+    color: #53b3b9
+}
+.main_info_r .box_recommend .link_recommendhover {
+    color: #53b3b9
+}

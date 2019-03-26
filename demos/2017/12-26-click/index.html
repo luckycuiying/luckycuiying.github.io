@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <!-- meta:vp -->
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+     <!--[if lt IE 9]>
+    <script src="js/html5.min.js"></script>
+    <![endif]-->
+    <title>移动端模拟click</title>
+    <link charset="utf-8" rel="stylesheet" type="text/css" href="../comment/rest.css">
+    <style>
+        html,body{
+            width:100%;
+            height: 100%;
+            background: #eee;
+            overflow: hidden;
+        }
+        .box{
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            width:100px;
+            height: 100px;
+            background: lightblue;
+            -webkit-transition:all 1s linear 0s;
+            transition:all 1s linear 0s;
+        }
+
+    </style>
+</head>
+<body>
+   <div class="box"></div>
+   <!-- 解决移动端点击事件的300s延迟效果 -->
+   <script type="text/javascript" src="fastclick.js"></script>
+   <script type="text/javascript">
+    Fastclick.attach(document.body)
+
+
+        function on(curEle, type,fn){
+            curEle.addEventListener(type,fn,false)
+        }
+        var oBox = document.querySelector(".box");
+        // 使用touch事件模型实现点击操作（双击和单击）
+        on(oBox,'touchstart',function(ev){
+            // ev: 常用的事件有: type,target,preventDefault(returnValue),stopPropagation(cancelBubble),changedTouches,touches
+            // changeTouches和touches 都是手指信息的集合
+            // touches值必须条件是只有手指还在屏幕上才可以获取。所以在touchend 事件中touchend 事件中需要获取离开的瞬间坐标，只能使用changeTouches 获取
+            //console.log(ev) 
+            var point = ev.touches[0];
+            this["strX"] = point.clientX;
+            this["strY"] = point.clientY;
+            this["isMove"] = false;
+        })
+        on(oBox,'touchmove',function(ev){
+            var point = ev.touches[0];
+            var curX = point.clientX,curY = point.clientY;
+            // 判断是否发生滑动，需要判断偏移的值是否在30px以内。
+            
+            if(Math.abs(curX-this["strX"])>30||Math.abs(curY - this["strY"])>30){
+                this["isMove"] = true;
+            }
+
+        })
+        on(oBox,'touchend',function(ev){
+            if(this["isMove"] === false){
+                this.style.webkitTransitionDuration = '1s';
+                this.style.webkitTransform="rotate(360deg)";
+                var delayTimer = window.setTimeout(function(){
+                    this.style.webkitTransitionDuration = '0s';
+                    this.style.webkitTransform="rotate(0deg)";
+
+                }.bind(this),1000)
+            }else{
+                this.style.background ="red";
+            }
+
+        })
+        // oBox.addEventListener('click',function(){ 存在延迟300s 
+        //     this.style.webkitTransform="rotate(360deg)"
+        // },false)
+   </script>
+</body>
+</html>

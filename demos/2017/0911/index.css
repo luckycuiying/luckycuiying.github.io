@@ -1,0 +1,200 @@
+.b_wanttogo {
+  margin-top: 35px;
+}
+.b_wanttogo .hd {
+  color: #333333;
+  line-height: 50px;
+  width: 1000px;
+  height: 50px;
+}
+.b_wanttogo .hd .des {
+  font-family: "microsoft yahei";
+  font-size: 18px;
+  float: left;
+  display: inline;
+}
+.b_wanttogo .hd .tagbox {
+  line-height: 40px;
+  display: inline;
+  margin-top: 10px;
+  color: #666666;
+  font-size: 14px;
+  height: 40px;
+}
+.b_wanttogo .hd .tagbox .list_item {
+  _display: inline;
+  _zoom: 1;
+}
+.b_wanttogo .hd .tagbox .list_item .item {
+  position: relative;
+  float: left;
+  display: inline;
+  background-color: #f5f5f5;
+  border: #ededed 1px solid;
+  height: 28px;
+  text-align: center;
+  line-height: 28px;
+  margin: 0px 0px 0px 10px;
+  padding: 0px 12px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.b_wanttogo .hd .tagbox .list_item .item .arrow {
+  display: none;
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  background: url("//source.qunarzz.com/site/images/travel/place/tag_arrow.jpg") no-repeat 0px 0px;
+  margin-left: -5px;
+  width: 10px;
+  height: 7px;
+  line-height: 0px;
+  font-size: 0px;
+}
+.b_wanttogo .hd .tagbox .list_item .current {
+  background-color: #7fc1c5;
+  border: #7fc1c5 1px solid;
+  color: #ffffff;
+}
+.b_wanttogo .hd .tagbox .list_item .current .arrow {
+  display: block;
+}
+.b_wanttogo .ct {
+  margin-top: 15px;
+}
+.b_wanttogo .ct .list_item .item {
+  position: relative;
+  height: 474px;
+  display: none;
+}
+.b_wanttogo .ct .list_item .item .imgbox {
+  position: absolute;
+  overflow: hidden;
+}
+.b_wanttogo .ct .list_item .item .imgbox .txt {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  z-index: 100;
+  padding: 15px;
+  background-color: transparent;
+  opacity: 1;
+  filter: alpha(opacity=100);
+  -ms-filter: alpha(opacity=1);
+}
+.b_wanttogo .ct .list_item .item .imgbox .txt .t {
+  display: block;
+  font-size: 30px;
+  font-family: "microsoft yahei";
+  color: #ffffff;
+  line-height: 30px;
+}
+.b_wanttogo .ct .list_item .item .imgbox .txt .c {
+  display: none;
+  margin-top: 5px;
+  line-height: 22px;
+  color: #000000;
+  zoom: 1;
+}
+.b_wanttogo .ct .list_item .item .imgbox .txtbg {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  z-index: 50;
+  width: 500px;
+  height: 50px;
+  background: url("//source.qunarzz.com/site/images/travel/place/img_bg_02.png") 0px 0px no-repeat;
+  _background: none;
+  _filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='//source.qunarzz.com/site/images/travel/place/img_bg_02.png', sizingMethod='scale');
+}
+.b_wanttogo .ct .list_item .item .hover .txt {
+  background-color: #ffffff;
+  opacity: 0.7;
+  filter: alpha(opacity=70);
+  -ms-filter: alpha(opacity=0.7);
+}
+.b_wanttogo .ct .list_item .item .hover .txt .t {
+  display: block;
+  color: #000000;
+}
+.b_wanttogo .ct .list_item .item .hover .txt .c {
+  display: block;
+}
+.b_wanttogo .ct .list_item .item .box_01 {
+  top: 0px;
+  left: 0px;
+  width: 350px;
+  height: 474px;
+}
+.b_wanttogo .ct .list_item .item .box_01 .txt {
+  width: 320px;
+}
+.b_wanttogo .ct .list_item .item .box_01 .c {
+  width: 320px;
+}
+.b_wanttogo .ct .list_item .item .box_02 {
+  top: 0px;
+  left: 353px;
+  width: 214px;
+  height: 207px;
+}
+.b_wanttogo .ct .list_item .item .box_02 .txt {
+  width: 184px;
+}
+.b_wanttogo .ct .list_item .item .box_02 .c {
+  width: 184px;
+}
+.b_wanttogo .ct .list_item .item .box_03 {
+  top: 0px;
+  left: 570px;
+  width: 214px;
+  height: 207px;
+}
+.b_wanttogo .ct .list_item .item .box_03 .txt {
+  width: 184px;
+}
+.b_wanttogo .ct .list_item .item .box_03 .c {
+  width: 184px;
+}
+.b_wanttogo .ct .list_item .item .box_04 {
+  top: 0px;
+  left: 787px;
+  width: 214px;
+  height: 207px;
+}
+.b_wanttogo .ct .list_item .item .box_04 .txt {
+  width: 184px;
+}
+.b_wanttogo .ct .list_item .item .box_04 .c {
+  width: 184px;
+}
+.b_wanttogo .ct .list_item .item .box_05 {
+  top: 210px;
+  left: 353px;
+  width: 393px;
+  height: 264px;
+}
+.b_wanttogo .ct .list_item .item .box_05 .txt {
+  width: 363px;
+}
+.b_wanttogo .ct .list_item .item .box_05 .c {
+  width: 363px;
+}
+.b_wanttogo .ct .list_item .item .box_06 {
+  top: 210px;
+  left: 749px;
+  width: 252px;
+  height: 264px;
+}
+.b_wanttogo .ct .list_item .item .box_06 .txt {
+  width: 222px;
+}
+.b_wanttogo .ct .list_item .item .box_06 .c {
+  width: 222px;
+}
+.b_wanttogo .ct .list_item .current {
+  display: block;
+}

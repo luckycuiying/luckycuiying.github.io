@@ -1,0 +1,24 @@
+
+.transform-scale(@val:1){
+    -webkit-transform:scale(@val);
+    -moz-transform:scale(@val);
+    -ms-transform:scale(@val);
+    -o-transform:scale(@val);
+    transform:scale(@val);
+}
+// 多个参数一般用逗号隔开 动画
+.transition-an(@property:all,@duration:1s,@time-function:linear,@delay0s){
+    -webkit-transition:@arguments;
+    -moz-transition:@arguments;
+    -ms-transition:@arguments;
+    -o-transition:@arguments;
+    transition:@arguments;
+}
+.box{
+    width:100px;
+    height:100px;
+    border:1px solid #eee;
+    .transition-an(@duration:.3s);
+    &:hover{
+        .transform-scale(1.5)
+    }

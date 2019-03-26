@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <title>翻页demo</title>
+<!--     <link charset="utf-8" rel="stylesheet" type="text/css" href="../comment/rest.css">
+ -->    <link charset="utf-8" rel="stylesheet" type="text/css" href="index.css">
+</head>
+<body>
+   <ul class="box2">
+       <li><span>编号</span><span>4</span></li>
+       <li><span>姓名</span><span>xxx</span></li>
+       <li><span>性别</span><span>男</span></li>
+       <li><span>分数</span><span>78</span></li>
+   </ul>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+    <script type="text/javascript">
+        //var query = window.location.href;获取地址
+        //获取url中的参数
+    detailDomModul=(function(){
+        function getUrlParam(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+            var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+            if (r != null) return unescape(r[2]); return null; //返回参数值
+        }
+        var curId = parseFloat(getUrlParam('id'));
+        function getData(){
+            $.ajax({
+                url: '/getInfo?id='+(curId-1),
+                type: 'get',
+                dataType: 'json',
+            })
+            .done(function(json) {
+                console.log(json)
+                if(json && json.code ===0){
+                    var data = json.data;
+                    bindHTML(data);
+                }
+            })   
+        }
+        var mapList={
+            id:"编号",
+            name:"姓名",
+            sex:"性别",
+            score:"分数"
+        }
+        function bindHTML(data){
+            var str = "";
+            if(data){
+                var idNum =data["id"]+1;
+                var sex = data["sex"]==1?"女":"男";
+                str+='<li><span>'+mapList["id"]+'</span><span>'+idNum+'</span></li>'
+                str+='<li><span>'+mapList["name"]+'</span><span>'+data["name"]+'</span></li>'
+                str+='<li><span>'+mapList["sex"]+'</span><span>'+sex+'</span></li>'
+                str+='<li><span>'+mapList["score"]+'</span><span>'+data["score"]+'</span></li>'
+
+                $(".box2").html(str)
+            }
+        }
+        function init(){
+            getData();
+        }
+        return{init:init}
+    }());
+    detailDomModul.init()
+    </script>
+</body>
+</html>

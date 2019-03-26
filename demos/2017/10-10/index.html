@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <title>demo</title>
+    <link rel="stylesheet" type="text/css" href="../comment/rest.css"></head>
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <body>
+    案例一：
+       <div id="parent">
+               父元素
+               <div id="child">
+                   子元素
+               </div>
+           </div>
+           案例二：
+        <div id="parent2">
+                父元素
+                <div id="child2">
+                    子元素
+                </div>
+         </div>
+           <script>
+           document.body.addEventListener('click',function(e){
+               console.log('click-body');
+               alert('click-body')
+           });
+           var parent = document.getElementById('parent');
+           var child = document.getElementById('child');
+           parent.addEventListener('click',function(e){
+               console.log('click-parent');
+               alert('click-parent')
+           });
+           child.addEventListener('click',function(e){
+               console.log('click-child');
+               alert('click-child')
+               // e.stopPropagation() 阻止冒泡
+           });
+           
+        
+           var parent2 = document.getElementById('parent2');
+           var child2 = document.getElementById('child2');
+           parent2.addEventListener('click',function(e){
+               console.log('click-parent2');
+               alert('click-parent2')
+           },true);
+           child2.addEventListener('click',function(e){
+               console.log('click-child2');
+               alert('click-child2')
+               // e.stopPropagation() 阻止冒泡
+           },true);
+           </script>
+          
+    </body>
+
+</html>

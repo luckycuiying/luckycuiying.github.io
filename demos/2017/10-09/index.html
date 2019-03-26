@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <title>demo</title>
+    <link rel="stylesheet" type="text/css" href="../comment/rest.css"></head>
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+    <body>
+        <h2>.mouseover()方法</h2>
+          <div class="left">
+              <div class="aaron1">
+                  <p>鼠标离开此区域触发mouseover事件</p>
+                  <a>mouseover事件触发次数：</a><br>
+                  <a>mouseover冒泡事件触发次数：</a>
+              </div>
+          </div>
+
+          <h2>.mouseenter()方法</h2>
+          <div class="right">
+              <div class="aaron2">
+                  <p>鼠标离开此区域触发mouseenter事件</p>
+                  <a>mouseenter事件触发次数：</a><br>
+                  <a>mouseenter冒泡事件触发次数：</a>
+              </div>
+          </div>
+          <br>
+         <script>
+            var i = 0;
+            $('.aaron1 p').mouseover(function(e) {
+                $('.aaron1 a:first').html('mouseover事件触发的次数：'+ (++i));
+            });
+            var n = 0;
+            $('.aaron1').mouseover(function(e) {
+               $('.aaron1 a:last').html('mouseover冒泡事件触发次数：'+(++n));
+            });
+            var j = 0;
+            $('.aaron2 p').mouseenter(function(e) {
+                $('.aaron2 a:first').html('mouseenter事件触发的次数：'+ (++j));
+            });
+            var q = 0;
+            $('.aaron2').mouseenter(function(e) {
+               $('.aaron2 a:last').html('mouseenter冒泡事件触发次数：'+(++q));
+            });
+         </script>
+    </body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <!-- meta:vp -->
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+     <!--[if lt IE 9]>
+    <script src="js/html5.min.js"></script>
+    <![endif]-->
+    <title>Swiper</title>
+    <link charset="utf-8" rel="stylesheet" type="text/css" href="../comment/swiper-3.4.2.min.css">
+    <link charset="utf-8" rel="stylesheet" type="text/css" href="../comment/rest.css">
+    <link rel="stylesheet" type="text/css" href="index.css">
+</head>
+<body>
+    <section class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <img class="swiper-lazy" data-src="https://m.360buyimg.com/mobilecms/s1125x549_jfs/t15769/234/592356785/192742/56a05122/5a376289N4e74f201.jpg!q70.jpg" alt>
+                <div class="swiper-lazy-preloader"></div>
+            </div>
+            <div class="swiper-slide">
+                <img class="swiper-lazy" data-src="https://img1.360buyimg.com/da/jfs/t14173/269/2506782582/92159/173316d6/5a408820N0aa89ce0.jpg" alt>
+                <div class="swiper-lazy-preloader"></div>
+            </div>
+            <div class="swiper-slide">
+                <img class="swiper-lazy" data-src="https://img13.360buyimg.com/da/jfs/t12748/306/2382660684/184042/98131625/5a3b76c4N7101daa1.jpg" alt>
+                <div class="swiper-lazy-preloader"></div>
+            </div>
+            <div class="swiper-slide">
+                <img class="swiper-lazy" data-src="https://m.360buyimg.com/mobilecms/s1125x549_jfs/t13945/271/2190854675/198892/d48d70ad/5a38cea4N2079e7c8.jpg!q70.jpg" alt>
+                <div class="swiper-lazy-preloader"></div>
+            </div>
+            <div class="swiper-slide">
+                <img class="swiper-lazy" data-src="https://img1.360buyimg.com/da/jfs/t16291/252/712698561/97773/c8e40e58/5a3c77acNbb14d6bd.jpg" alt>
+                <div class="swiper-lazy-preloader"></div>
+            </div>
+        </div>
+        <div class="swiper-pagination"></div>
+    </section>
+   
+   <script type="text/javascript" src="../comment/swiper-3.4.2.min.js"></script>
+   <script type="text/javascript" src="../comment/swiper.animate1.0.2.min.js"></script>
+   <script type="text/javascript">
+    (function () {
+        var winW = document.documentElement.clientWidth, desW = 640, htmlFont = winW / desW * 100;
+        if (winW >= 640) {//当屏幕的宽度大于设计稿的宽度是，整个区域最宽640
+            $('.musicBox').css({//可在css中写
+                width: desW,
+                margin: "0 auto"
+            });
+            window.htmlFont = 100;
+            return;
+        }
+        window.htmlFont = htmlFont;//将变量转为全局变量传递出函数作用域
+        document.documentElement.style.fontSize = htmlFont + "px";//设置html根元素的字体大小
+    })();
+    // 初始化Swiper 实现区域的
+    var mySwiper = new Swiper ('.swiper-container', {
+        loop: true,
+        effect:'cube',
+        cube: {
+            slideShadows: true,
+            shadow: true,
+            shadowOffset: 100,
+            shadowScale: 0.6
+        },
+        pagination : '.swiper-pagination',
+        autoplay: 2000,
+        lazyLoading:true,
+        lazyLoadingInPrevNext:true
+
+    })
+
+   </script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+.left div,
+    .right div {
+        width: 350px;
+        height: 80px;
+        padding: 5px;
+        margin: 5px;
+        border: 1px solid #ccc;
+    }
+    p{
+        height: 50px;
+        border: 1px solid red;
+        margin: 30px;
+    }
+    .left div {
+        background: #bbffaa;
+    }
+    .right div {
+        background: yellow;
+    }

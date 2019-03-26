@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <title>事件-拖拽</title>
+    <link rel="stylesheet" type="text/css" href="../comment/rest.css">
+    <style>
+    input{
+        display: block;
+    }
+    html, body{
+        width: 100%;
+        height: 100%;
+        border-top:1px solid transparent;
+    }
+    .box{
+       /*  需要知道宽度 水平垂直居中
+       position: absolute;
+        left: 50%;
+        top: 50%;
+        margin: -150px 0 0 -150px;*/
+       /*  IE6~8不兼容 不设置宽度，主要用于移动端 水平垂直居中
+       position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+*/      position: absolute;
+        width: 300px;  
+        height: 300px;
+        background:#ffe479;
+        background: -webkit-linear-gradient(top left,#2b93d2,#FA5889,#CDE074,#ffe470)     
+    }
+    
+    </style>
+</head>
+<body>
+   <div id="box" class="box">
+      
+   </div>
+</body>
+</html>
+<script type="text/javascript" src="../comment/event.js"></script>
+<script type="text/javascript">
+    var box = document.getElementById('box');
+    var n = 0;
+    function fn1(){
+        n++;
+        if(n>=3){
+            unbind(box,'click',fn1)
+            return;
+        }
+        console.log(1);
+    }
+        function fn2(){
+        console.log(2);
+    }
+    bind(box, "click", fn1);
+    bind(box, "click", fn1);
+    bind(box, "click", fn1);
+    bind(box, "click", fn2);
+</script>

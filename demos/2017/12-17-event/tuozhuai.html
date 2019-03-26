@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <title>事件-拖拽</title>
+    <link rel="stylesheet" type="text/css" href="../comment/rest.css">
+    <style>
+    input{
+        display: block;
+    }
+    html, body{
+        width: 100%;
+        height: 100%;
+        border-top:1px solid transparent;
+    }
+    .box{
+       /*  需要知道宽度 水平垂直居中
+       position: absolute;
+        left: 50%;
+        top: 50%;
+        margin: -150px 0 0 -150px;*/
+       /*  IE6~8不兼容 不设置宽度，主要用于移动端 水平垂直居中
+       position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+*/      position: absolute;
+        width: 100px;  
+        height: 100px;
+        background:#ffe479;
+        background: -webkit-linear-gradient(top left,#2b93d2,#FA5889,#CDE074,#ffe470)     
+    }
+    
+    </style>
+</head>
+<body>
+   <div id="box" class="box">
+      
+   </div>
+</body>
+</html>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+<script type="text/javascript">
+    $("#box").bind('mousedown', dowm);
+    function dowm(e) {
+        this["strX"] = e.clientX;
+        this["strY"] = e.clientY;
+        this["strL"] = this.offsetLeft;
+        this["strT"] = this.offsetTop;
+        $(this).bind('mousemove', move);
+        $(this).bind('mouseup', up);
+    }
+    function move(e){
+        var curLeft = e.clientX-this["strX"]+this["strL"];
+        var curTop = e.clientY-this["strY"]+this["strT"];
+        var minL = 0 ;minT = 0; maxL = (document.documentElement.clientWidth||document.body.clientWidth)-this.offsetWidth;
+        maxT = (document.documentElement.clientHeight||document.body.clientHeight)-this.offsetHeight;
+        curLeft = curLeft<=minL ? minL : (curLeft>=maxL?maxL:curLeft);
+        curTop = curTop<=minT ? minT:(curTop>=maxT?maxT:curTop);
+        this.style.left = curLeft+"px";
+        this.style.top = curTop+"px"
+    }
+    function up(e){
+        $(this).unbind("mousemove",move);
+        $(this).unbind("mouseup",up);
+    }
+</script>

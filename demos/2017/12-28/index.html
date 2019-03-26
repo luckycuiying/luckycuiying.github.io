@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>柯理化函数思想-bind()</title>
+<!--     <link charset="utf-8" rel="stylesheet" type="text/css" href="../comment/rest.css">
+ -->    <link charset="utf-8" rel="stylesheet" type="text/css" href="index.css">
+</head>
+<body>
+    <div id="box" class="box">
+        柯理化函数思想：JS 预先处理的思想:利用了函数执行可以形成一个不销毁的私有作用域的原理，把需要预先处理的内容都存在这个不销毁的作用域内
+        ，并且返回一个小函数，以后执行的都是这个小函数，在小函数里面把之前预先存储的值进行相关的操作处理 
+        bind 的作用： 把传递进来的callBack这个方法中的this，预先处理为context
+    </div>
+    <script>
+        // function bind(callBack,context) {
+        //    // context = context || window;
+        //    //利用了数组的内置方法把类数组转化成数组
+        //    var outerArg = Array.prototype.slice.call(arguments,2);
+        //    return function(){
+        //     var innerArg = Array.prototype.slice.call(arguments,0);
+        //     var  args = outerArg.concat(innerArg);
+        //     callBack.apply(context,args);
+        //    }
+        // }
+
+        var obj ={
+            name:"lisi",
+            age:5
+        }
+        function fn(num1,num2){
+            console.log(this,num1,num2,arguments[2]);
+        }
+        // 1,给定时器绑定一个方法，当定时器到达时间的时候，让fn函数执行,并且让fn 中的this，变为obj
+        // window.setTimeout(bind(fn,obj),1000);
+        // 2, 传递参数
+        // window.setTimeout(bind(fn,obj,100,200),1000);
+        // window.setTimeout(fn.bind(obj,100,200),1000);
+        // 
+        // 3, 给body 绑定click 事件
+        // 需求： 点击body 时让fn 方法里面的this是obj 还把参数也预先处理;
+        // 使用内置的 
+        // document.body.onclick = fn.bind(obj,100,200)
+        // document.body.onclick = function(){
+        //     // 给元素的某一个行为绑定方法，当行为触发的时候，执行的对应方法，此时方法中的this 是当前元素本身，而且
+        //     // 浏览器还会给当前的的方法默认的传递一个参数值：MouseEvent 但是在IE 6~8 先不会传递这个默认值
+        //     console.log(this, arguments) // body 
+        // } 
+        //document.body.onclick = bind(fn,obj,100,200)
+
+
+        Function.prototype.myBind= function myBind(context){
+            var self = this;
+            var outerArg = Array.prototype.slice.call(arguments,1);
+            //兼容
+            if("bind" in Function.prototype){
+                return this.bind.apply(this,[context].concat(outerArg));
+            }
+            // 不兼容
+            return function(){
+                var innerArg = Array.prototype.slice.call(arguments,0);
+                innerArg.length===0?innerArg[innerArg.length]=window.event:null;
+                self.apply(context,outerArg.concat(innerArg));
+            }
+        };
+        document.body.onclick = fn.myBind(obj,100,200)
+
+    </script>
+</body>
+</html>

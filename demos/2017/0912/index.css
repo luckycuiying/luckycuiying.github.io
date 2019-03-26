@@ -1,0 +1,126 @@
+.b_calendar {
+    width: 1000px;
+    margin: 35px auto 0;
+}
+.b_calendar .hd {
+    color: #333333;
+    line-height: 50px;
+    width: 1000px;
+    height: 50px;
+}
+.b_calendar .hd .tit {
+    font-size: 30px;
+    font-family: "microsoft yahei";
+    float: left;
+    display: inline;
+}
+.b_calendar .hd .more {
+    float: right;
+    display: inline;
+    color: #666666;
+    background-color: #f5f5f5;
+    border: #ededed 1px solid;
+    height: 28px;
+    text-align: center;
+    line-height: 28px;
+    margin: 10px 0px 0px 10px;
+    padding: 0px 12px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.b_calendar .hd .more:hover {
+    color: #666666;
+}
+.b_calendar .tagbox {
+    float: right;
+    display: inline;
+    margin-top: 10px;
+    color: #666666;
+    font-size: 14px;
+    height: 40px;
+}
+.b_calendar .tagbox .list_item {
+    _display: inline;
+    _zoom: 1;
+}
+.b_calendar .tagbox .list_item .item {
+    position: relative;
+    float: left;
+    display: inline;
+    background-color: #f5f5f5;
+    border: #ededed 1px solid;
+    height: 28px;
+    text-align: center;
+    line-height: 28px;
+    margin: 0px 0px 0px 10px;
+    padding: 0px 12px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.b_calendar .tagbox .list_item .item .arrow {
+    display: none;
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    background: url("//source.qunarzz.com/site/images/travel/place/tag_arrow.jpg") no-repeat 0px 0px;
+    margin-left: -5px;
+    width: 10px;
+    height: 7px;
+    line-height: 0px;
+    font-size: 0px;
+}
+.b_calendar .tagbox .list_item .current {
+    background-color: #7fc1c5;
+    border: #7fc1c5 1px solid;
+    color: #ffffff;
+}
+.b_calendar .tagbox .list_item .current .arrow {
+    display: block;
+}
+.b_calendar .imglistbox .list_item {
+    padding: 0;
+    margin-left: -15px;
+    display: none;
+}
+.b_calendar .imglistbox .list_item .item {
+    float: left;
+    display: inline;
+    background-color: #f5f5f5;
+    width: 235px;
+    height: 235px;
+    border: #ebebeb 1px solid;
+    margin: 20px 0 0  15px;
+    overflow: hidden;
+}
+.b_calendar .imglistbox .list_item .item .titbox {
+    padding-left: 20px;
+    line-height: 57px;
+}
+.b_calendar .imglistbox .list_item .item .titbox .tit {
+    color: #333333;
+    font-size: 20px;
+    font-family: "microsoft yahei";
+    float: left;
+    display: inline;
+    white-space: nowrap;
+}
+.b_calendar .imglistbox .list_item .item .titbox .tit:hover {
+    color: #ff6600;
+}
+.b_calendar .imglistbox .list_item .item .titbox .area {
+    color: #999999;
+    margin-left: 5px;
+    margin-top: 3px;
+    float: left;
+    display: inline;
+    white-space: nowrap;
+}
+.b_calendar .imglistbox .current {
+    display: block;
+}

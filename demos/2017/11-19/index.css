@@ -1,0 +1,7 @@
+.box{
+    margin: 0 auto;
+    width:500px;
+    height:250px;
+    border: 10px solid red;
+    background: #ccc;
+}

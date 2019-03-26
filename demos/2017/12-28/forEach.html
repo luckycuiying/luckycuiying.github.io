@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <title>柯理化函数-回调函数</title>
+<!--     <link charset="utf-8" rel="stylesheet" type="text/css" href="../comment/rest.css">
+ -->    <link charset="utf-8" rel="stylesheet" type="text/css" href="index.css">
+</head>
+<body>
+   <script type="text/javascript">
+    // forEach: 用来遍历数组的中的每一项
+    // 1》 数组中有几项，那么我们传递进去的匿名回调函数就需要几次
+    // 2》 每一次执行匿名韩式的时候，还给其传递了三个参数：数组中的当前项item,当前项的索引index，原始数组input
+    // 3》 理论是forEach 方法是没有返回值的，不仅仅是遍历数组中的每一项，不对原来的数组进行修改，但是我们可以自己修改数组的索引值来修改原来的数组
+    var ary=[12,23,34,45,56];
+    var res = ary.forEach(function(item,index,input){
+        // console.log("ok") 5次
+        // console.log(item)
+        // console.log(index)
+        // console.log(input)
+        input[index] = item*10;
+    });
+    console.log(res) // undefind
+    console.log(ary) //会对原来的数组进行改变 [120,230,340,450,560]
+
+    // 不想改变原来数组可以使用forEach的兄弟方法map()
+    // map 有返回值
+    var  ary = [12,23,34,45,56];
+    var res = ary.map(function(item,index,input){
+        return item*10
+    })
+    console.log(res) // [120,230,340,450,560]
+    console.log(ary) //[12,23,34,45,56];
+  // 不管是forEach 还是map 都支持第二个参数，第二个参数的意思是把匿名还是里面的this进行修改，传进去是谁，this 就是谁。
+  // 都不兼容ie6~8 自己写一个支持所有浏览器的forEach 方法
+
+    Array.prototype.myForEach = function myForEach(callBack,context){
+        context = context || window;
+        if("forEach" in Array.prototype){
+            this.forEach(callBack,context);
+            return;
+        }
+        //ie8 以下
+        for (var i = 0,len=this.length;i<len i++) {
+            // this[i] 当前项， 当前项索引， 当前的数组
+            // call(context)修改this 指向
+            callBack && callBack.call(context,this[i],i,this);
+        }
+    }
+
+     Array.prototype.myMap = function myMap(callBack,context){
+        context = context || window;
+        if("forEach" in Array.prototype){
+            this.map(callBack,context);
+            return;
+        }
+        //ie8 以下
+        var newAry = [];
+        for (var i = 0,len=this.length;i<len i++) {
+           if(typeof callBack ==="function"){
+            var backVal = callBack.call(context,this[i],i,this);
+            newAry[newAry.length] = backVal;
+           }  
+        }
+        return newAry;
+    }
+   </script>
+</body>
+</html>

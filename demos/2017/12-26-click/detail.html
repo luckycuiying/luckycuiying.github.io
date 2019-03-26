@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <!-- meta:vp -->
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+     <!--[if lt IE 9]>
+    <script src="js/html5.min.js"></script>
+    <![endif]-->
+    <title>移动端模拟click</title>
+    <link charset="utf-8" rel="stylesheet" type="text/css" href="../comment/rest.css">
+    <style>
+        html,body{
+            width:100%;
+            height: 100%;
+            background: #eee;
+            overflow: hidden;
+        }
+        .box{
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            width:100px;
+            height: 100px;
+            background: lightblue;
+            -webkit-transition:all 1s linear 0s;
+            transition:all 1s linear 0s;
+        }
+
+    </style>
+</head>
+<body>
+   <div class="box"></div>
+   <!-- 解决移动端点击事件的300s延迟效果 -->
+   <script type="text/javascript" src="../comment/touch-0.2.14.min.js"></script>
+   <script type="text/javascript">
+    var oBox = document.querySelector('.box');
+    touch.on(oBox,'tap',function(ev){
+        this.style.webkitTransitionDuration="1s";
+        this.style.webkitTransform = "rotate(360deg)";
+        var delayTimer = window.setTimeout(function(){
+            this.style.webkitTransitionDuration ="0s";
+            this.style.webkitTransform ="rotate(0deg)";
+            window.clearTimeout(delayTimer)
+        }.bind(this),1000);
+    });
+    touch.on(oBox,'doubletap',function(ev){
+        this.style.webkitTransitionDuration="1s";
+        this.style.webkitTransform = "rotate(-360deg)";
+        var delayTimer = window.setTimeout(function(){
+            this.style.webkitTransitionDuration ="0s";
+            this.style.webkitTransform ="rotate(0deg)";
+            window.clearTimeout(delayTimer)
+        }.bind(this),1000);
+    });
+    touch.on(oBox,'hold',function(ev){
+       this.style.backgroundColor = "red";
+        
+    })
+   </script>
+  
+</body>
+</html>

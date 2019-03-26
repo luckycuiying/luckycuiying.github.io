@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>原型链继承</title>
+<!--     <link charset="utf-8" rel="stylesheet" type="text/css" href="../comment/rest.css">
+ -->    <link charset="utf-8" rel="stylesheet" type="text/css" href="index.css">
+</head>
+<body>
+    <div id="box" class="box"> 
+        <h2>box的原型链</h2>
+        div#box.box__proto__:HTMLDivElement__proto__:HTMLElement__proto__:Element.prototype-->Node.prototype--->EventTarget.
+        prototype-->Object.prototype
+
+        <img src alt>
+    </div>
+    <script>
+    function myObject(){};
+    Object.prototype ={
+        constructor:function (argument) {  // body...
+        }
+    }
+    function myEventTarget (){}
+    myEventTarget.prototype = new myObject();
+    function myNode(){}
+    myNode.prototype = new myEventTarget();
+    function b(){
+        this.x =100;
+    };
+    B.prototype = new A;
+    // 原型继承 是我们js 中最常用的一种继承方式
+    //  子类B 想要继承父类A中的所有的属性和方法（私有加公有），只需要让B.prototype = new A; 即可。
+    //  原型继承的特点： 它是把父类的私有和公有的属性和方法都继承到了子类原型上
+    //  
+   //冒充对象继承
+   function A(){
+    this.x = 100;
+   }
+   Array.prototype.getX = function(){
+    console.log(this.x);
+   };
+   function B(){
+    var temp = new A;
+    for(key in temp){
+        this[key] = temp[key];
+    }
+    temp = null;
+   }
+
+   // 混合继承原理是： 原型继承加call 继承
+   function A(){
+    this.x = 100;
+   }
+   Array.prototype.getX = function(){
+    console.log(this.x);
+   };
+   function B(){
+        A.call(this);
+   }
+   B.prototype = new A;
+   B.prototype.constructor = B
+   var n = new B;
+   n.getX()
+   // 寄生组合式继承
+   function A(){
+    this.x = 100;
+   }
+   Array.prototype.getX = function(){
+    console.log(this.x);
+   };
+   function B(){
+        A.call(this);
+   }
+   B.prototype = Object.create(A.prototype);
+   B.prototype.constructor = B
+   var n = new B;
+   n.getX()
+
+    </script>
+</body>
+</html>

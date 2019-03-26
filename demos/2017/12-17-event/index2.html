@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <title>事件委托案例</title>
+    <link rel="stylesheet" type="text/css" href="../comment/rest.css">
+   <style>
+        .box{
+              position: relative;
+              width: 300px;
+              height: 300px;
+              margin: 20px auto;
+              background: green;
+          }
+        
+          #mark{
+              position: absolute;
+              top:0;
+              left: 0;
+              width: 100px;
+              height: 100px;
+              background: red; 
+          }
+         
+      </style>
+</head>
+<body>
+   <div class="box" id="box">
+   </div>
+</body>
+</html>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+<script type="text/javascript">
+    (function(){
+        var box = document.getElementById("box");
+        box.onmouseenter = function(e){
+            e = e || window.event;
+            var mark = document.createElement('div');
+            mark.id="mark";
+            this.append(mark);
+            mark.style.left = e.clientX-this.offsetLeft +5 +"px";
+            mark.style.top = e.clientY-this.offsetTop +5 +"px";
+        };
+        box.onmousemove = function(e){
+            e = e|| window.event;
+            var mark = document.getElementById('mark');
+            if(mark){
+                mark.style.left = e.clientX-this.offsetLeft+5 +"px";
+                mark.style.top = e.clientY-this.offsetTop +5 +"px";
+            }
+        };
+        box.onmouseleave = function(e){
+            e = e || window.event;
+           var mark = document.getElementById('mark');
+           console.log(mark)
+            if(mark){
+                box.removeChild(mark);
+            }
+        }
+    })()
+    //  onmouseenter 和onmouseover 都是鼠标滑上去的行为，但是onmouseenter 浏览器默认组织了了它的冒泡传播，
+    //  mark 的onmouseenter行为触发不会传播到box. 而onmouseover 是存在冒泡传播的， 想要阻止的话只能自己写代码阻止。
+</script>

@@ -1,0 +1,14 @@
+.box{
+    width:100px;
+    height:100px;
+    box-sizing: content-box;
+    border: 10px solid red;
+    padding: 10px;
+    margin: 20px auto;
+}
+.item{
+    height:26px;
+    line-height: 26px;
+    margin-bottom: 10px;
+    background: #ccc;
+}

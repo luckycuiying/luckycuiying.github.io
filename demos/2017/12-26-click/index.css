@@ -1,0 +1,24 @@
+// 假设设计稿是640px, 轮播图是600*300
+html{
+    font-size: 100px;
+}
+html,body{
+    width:100%;
+    overflow-x: hidden;
+}
+.swiper-container{
+    margin: 0 auto;
+    height: 3rem;
+    overflow: hidden
+}
+.swiper-slide{
+    height:3rem;
+}
+.swiper-slide img{
+    width:100%;
+    height:100%;
+}
+.swiper-container-horizontal .swiper-pagination-bullets{
+
+    bottom: -10px;
+}   

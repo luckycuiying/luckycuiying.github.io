@@ -1,0 +1,15 @@
+.banner,.banner2{
+    margin: 10px auto;
+    width: 790px;
+    height: 340px;
+    border: 1px solid #000;
+    background:#f1f1f1 url("img/loading.gif") no-repeat center center;
+}
+.banner img,.banner2 img{
+    display: none; 
+    width:100%;
+    height:100%;
+}
+.banner2 {
+    margin-top: 1000px;
+}

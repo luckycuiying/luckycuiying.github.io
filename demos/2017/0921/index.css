@@ -1,0 +1,90 @@
+.onebox,.twoBox{
+    background: #ccc;
+    margin-bottom: 20px;
+}
+.box{
+    display: flex;
+    margin: 0 auto 20px;
+    height: 200px;  
+}
+.box .item{
+margin-left: 20px;
+padding:10px;
+background:red;
+border: 1px solid green;
+}
+.box li:nth-child(1){
+    width:200px;
+    background:yellow;
+}
+.box li:nth-child(2){
+    // order:1;
+    flex:1;
+}
+.box li:nth-last-child(1){
+    // order:3;
+    width:200px;
+    margin-right: 20px;
+}
+.box2{
+    position:relative;
+    display:flex;
+    align-items:center; 
+    flex-wrap:nowrap; 
+    padding:20px;
+}
+.box3{
+    position:relative;
+    display:flex;
+    align-items:center; 
+    flex-wrap:wrap;
+    padding:20px;
+}.box4{
+    position:relative;
+    display:flex;
+    align-items:center; 
+    flex-wrap:wrap-reverse;
+    padding:20px;
+}
+.box2 .item{
+    height:40px;
+    line-height: 40px;
+    text-align: center;
+    background:pink;
+    margin-left:20px;
+}
+#container{
+    height:400px;
+    display:flex;
+    // align-items:center;
+    flex-direction:column;
+    border:2px solid black;
+}
+#container .top{
+    height:60px;
+    border:2px solid red;
+}
+#container .content{
+    flex:1;
+    display:flex;
+    height:300px;
+    overflow: hidden;
+}
+#container .content .left{
+    flex:1;
+    border:2px solid green;
+}
+#container .content .right{
+    flex:4;
+    display:flex;
+    flex-direction:column;
+    padding:20px;
+    overflow-y:auto;
+    line-height30px;
+    border:2px solid yellow;
+}
+#container .bottom{
+    height:40px;
+    border:2px solid blue;
+}
+

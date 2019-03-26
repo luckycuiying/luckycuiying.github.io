@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <title>事件委托案例</title>
+    <link rel="stylesheet" type="text/css" href="../comment/rest.css">
+    <style>
+        #box{
+            position: relative;
+            margin: 20px auto;
+            width: 100px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            border: 1px solid green;
+        }
+        #mark{
+            position: absolute;
+            top:30px;
+            left: -1px;
+            width: 300px;
+            height: 100px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+   <div id="box">
+        <img src alt>
+        <div id="mark" style="display:none">查看详情信息</div>
+   </div>
+</body>
+</html>
+<script type="text/javascript">
+    var mark = document.getElementById('mark');
+ document.body.onclick = function(e){
+    e = e || window.event;
+    e.target = e.target ||e.srcElemnt
+    if(e.target.id==="box" ||(e.target.tagName.toLowerCase() ==="span" && e.target.parentNode.id ==="box")){
+        if(mark.style.display==="none"){
+            mark.style.display="block";
+        }else{
+            mark.style.display ="none";
+        }
+        return;
+    };
+    if(e.target.id==="mark"){
+        return;
+    }
+    mark.style.display ="none";
+}
+
+   
+</script>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <title>返回顶部</title>
+    <link rel="stylesheet" type="text/css" href="../comment/rest.css">
+    <link rel="stylesheet" type="text/css" href="index.css">
+    
+</head>
+<body>
+   <!--  A 标签本身是跳转页面的，把跳转的地址写在href这个属性里面：
+    1》 如果不写值就是刷新本页面
+    2》写的如果是#target,就是锚点定位， 定位到当前页面ID 为target 这个位置
+    3》 “javascript:;” 这样就可以取消默认跳转行为
+    -->
+   <!--  <div id="box1">
+        <a href="" id="goLink">Go</a>
+        <div id="target"></div>
+    </div> -->
+    <div id="box2">
+        <a href="javascript:;" id="goLink" target="_blank" rel="noopener">Go</a>
+    </div>
+    <script type="text/javascript" src="../comment/utils.js"></script>
+    <script type="text/javascript" src="index.js"></script>
+</body>
+</html>
