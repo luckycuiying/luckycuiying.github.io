@@ -1,0 +1,69 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.8.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>xss和csrf | 你要逼自己优秀，然后骄傲的生活，余生还长，何必慌张。</title><link rel="stylesheet" type="text/css" href="//fonts.loli.net/css?family=Source+Code+Pro"><link rel="stylesheet" type="text/css" href="/css/style.css?v=2.0.3"><link rel="stylesheet" type="text/css" href="/css/highlight.css?v=2.0.3"><link rel="Shortcut Icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">xss和csrf</h1><a id="logo" href="/.">你要逼自己优秀，然后骄傲的生活，余生还长，何必慌张。</a><p class="description">cuiying.li</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div><div id="search-form"><div id="result-mask" class="hide"></div><label><input id="search-key" type="text" autocomplete="off" placeholder="搜索"></label><div id="result-wrap" class="hide"><div id="search-result"></div></div><div class="hide"><template id="search-tpl"><div class="item"><a href="/{path}" title="{title}"><div class="title">{title}</div><div class="time">{date}</div><div class="tags">{tags}</div></a></div></template></div></div></div><div id="layout" class="layout-g"><div class="layout-l"><div class="content_container"><div class="post"><h1 class="post-title">xss和csrf</h1><div class="post-meta"><a href="/2019/11/21/XSS和CSRF攻击/#comments" class="comment-count"></a><p><span class="date">Nov 21, 2019</span><span><i id="busuanzi_container_page_pv"><i id="busuanzi_value_page_pv"></i><i>点击</i></i></span></p></div><div class="post-content"><h3 id="第一-什么是XSS"><a href="#第一-什么是XSS" class="headerlink" title="第一 什么是XSS"></a>第一 什么是XSS</h3><ul>
+<li>xss:跨站脚本（Cross-site scripting,通常简称为xss） 是一种网站应用程序的安全漏洞攻击,是代码注入的一种。它允许恶意用户将代码注入到网页上， 其他用户在观看网页时就会收到影响。 这类攻击通常包含了HTML以及用户端脚本语言。<br>a</li>
+<li>CSRF:跨站请求伪造（Cross-site request forgery）也被称作one-click attack 或者 session riding. 通常缩写为CSRF或者XSRF. 是一种挟持用户在当前已登录的web 应用程序上执行非本意的操作的攻击方法。</li>
+</ul>
+<p>简单来说： </p>
+<ul>
+<li>XSS: 通过客户端脚本语言（最常见如：JavaScript）<br><code>常见的三种类型</code></li>
+</ul>
+<ul>
+<li>第一种: DOM-Base,不基于后端，修改前端页面的结构的属性， 插入内容， 造成攻击</li>
+<li><p>解决方案:</p>
+<ul>
+<li>在输出html时，加上Content Security Policy的Http Header <ul>
+<li>作用：可以防止页面被XSS攻击时，嵌入第三方  的脚本文件等）</li>
+<li>（缺陷：IE或低版本的浏览器可能不支持）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>第二种:在一个论坛上发帖中发布一段恶意的JavaScript 代码就是脚本注入， 如果这个代码内容有请求外部服务器，那么就叫做XSS。 </p>
+<ul>
+<li>通过cookie 来判断登录没有。登录后发布一段带有攻击的脚本，存储在服务器内， 所有人访问都会造成攻击,叫做xss 存储型攻击</li>
+</ul>
+</li>
+<li><p>第二种 反射型 <code>http://localhost:3000/welcome?type=&lt;script&gt;alert(document.cookie)&lt;/script&gt;</code><br>  会把script里面的内容映射到页面上,就能拿到账户和密码</p>
+<ul>
+<li>一般情况下回让前端获取不到cookie ,服务器端设置 httpOlny:true  并不是解决xss 的方案,只是降低受损范围</li>
+<li>一次性的， 诱导用户自己点开</li>
+</ul>
+</li>
+<li>解决方案:<ul>
+<li>查询参数可以加上编译,encodeURLComponent(req.requery.type),需要服务器配合过滤</li>
+<li><ul>
+<li>在设置Cookie时，加上HttpOnly参数<ul>
+<li>（作用：可以防止页面被XSS攻击时，Cookie信息被盗取，可兼容至IE6）</li>
+<li>（缺陷：网站本身的JS代码也无法操作Cookie，而且作用有限，只能保证Cookie的安全）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>CSRF :又称 XSRF 冒充用户发起请求（在用户不知情的情况下）完成一些违背用户意愿的请求。（例如：恶意发帖，删除帖子，改密码， 发邮件等） 常见的钓鱼网站。 给人吸引的文字，希望用户点击到指定的页面有嵌套一个恶意网站，让你输入账号和密码。 这样就盗走了你的账号和密码，黑客那你的账户和密码代替你登录，转账等操作</li>
+</ul>
+<ul>
+<li>解决方案: <ul>
+<li>添加验证码,(体验不太好)</li>
+<li>判断来源 服务器 检验请求的Referer参数 ，不靠谱， 可以用node 自己伪造发送请求来实现伪造</li>
+<li>token  第三方库 svg-captcha, 客户端发送验证码，服务器做验证。</li>
+</ul>
+</li>
+</ul>
+<p><code>通过抓包和接口的返回值</code>查看漏洞</p>
+<h3 id="如何防护"><a href="#如何防护" class="headerlink" title="如何防护"></a>如何防护</h3><p>中心思想是： 一切的一切外部来源数据，都要我们服务器代码的过滤，代码输出过滤后在能展示在页面上。一切外部数据都要做过滤。</p>
+<ul>
+<li>针对xss过滤的方法<ul>
+<li>客户端传递给服务器，需要校验现过滤一下</li>
+<li>服务器端也过滤一遍，  </li>
+<li>直接在输出的时候过滤<br><code>过滤的具体操作</code> 就是 转义提交和输出特殊字符的代码<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">encodeHtml</span>(<span class="params">str</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> str.replace(<span class="regexp">/&amp;/g</span>,<span class="string">'&amp;amp;'</span>).replace(<span class="regexp">/"/g</span>,<span class="string">'&amp;quot;'</span>).replace(<span class="regexp">/'/g</span>,<span class="string">'&amp;apos;'</span>).replace(<span class="regexp">/&lt;/g</span>,<span class="string">'&amp;lt;'</span>).replace(<span class="regexp">/&gt;/g</span>,<span class="string">'&amp;gt;'</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>尽量使用innerText() 和textContent() 也就是jquery的text()来输出文本内容</li>
+</ul>
+<h3 id="前端作防攻击都是防君子放不了小人的。"><a href="#前端作防攻击都是防君子放不了小人的。" class="headerlink" title="前端作防攻击都是防君子放不了小人的。"></a>前端作防攻击都是防君子放不了小人的。</h3></div><div class="post-copyright"><blockquote><p>原文作者: 李翠英</p><p>原文链接: <a href="http://yoursite.com/2019/11/21/XSS和CSRF攻击/">http://yoursite.com/2019/11/21/XSS和CSRF攻击/</a></p><p>版权声明: 转载请注明出处(必须保留作者署名及链接)</p></blockquote></div><div class="tags"></div><div class="post-share"><div class="social-share"><span>分享到:</span></div></div><div class="post-nav"><a href="/2019/11/20/浏览器堆栈内存分配/" class="next">浏览器堆栈内存分配</a></div><div id="comments"></div></div></div></div><div class="layout-r"><div id="sidebar"><div class="search-pla"></div><div id="toc" class="widget"><div class="widget-title"><i class="fa fa-fei">文章目录</i></div><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#第一-什么是XSS"><span class="toc-text">第一 什么是XSS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#如何防护"><span class="toc-text">如何防护</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#前端作防攻击都是防君子放不了小人的。"><span class="toc-text">前端作防攻击都是防君子放不了小人的。</span></a></li></ol></div><div class="widget"><div class="widget-title"><i class="fa fa-xie"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/11/21/XSS和CSRF攻击/">xss和csrf</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/20/浏览器堆栈内存分配/">浏览器堆栈内存分配</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/19/webpack-resolve解析/"> webpack-resolve解析</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/18/pos和get-请求的区别/">postVsget</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/17/webpack/">Hash vs chunkhash vs ContentHash</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/14/mobx/">mobx</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/11/React-自定义Hook/">React-自定义Hook</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/11/React-hooks-二/">React-hooks(Effect-Hook)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/11/React-hooks/">React-hooks(-)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/08/React-purComponent/">React-purComponent</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-gui"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Redux/">Redux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/webpack/">webpack</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">1</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-biao"> 标签</i></div><div class="tagcloud"><a href="/tags/js-基础/" style="font-size: 15px;">js 基础</a> <a href="/tags/js基础/" style="font-size: 15px;">js基础</a> <a href="/tags/js/" style="font-size: 15px;">js</a> <a href="/tags/javascript/" style="font-size: 15px;">javascript</a> <a href="/tags/JavaScript/" style="font-size: 15px;">JavaScript</a> <a href="/tags/Redux/" style="font-size: 15px;">Redux</a> <a href="/tags/React/" style="font-size: 15px;">React</a> <a href="/tags/css/" style="font-size: 15px;">css</a> <a href="/tags/jq基础/" style="font-size: 15px;">jq基础</a> <a href="/tags/css基础/" style="font-size: 15px;">css基础</a> <a href="/tags/css-基础/" style="font-size: 15px;">css 基础</a> <a href="/tags/工具使用技巧/" style="font-size: 15px;">工具使用技巧</a> <a href="/tags/计算机基础知识/" style="font-size: 15px;">计算机基础知识</a> <a href="/tags/工具/" style="font-size: 15px;">工具</a> <a href="/tags/javaScript/" style="font-size: 15px;">javaScript</a> <a href="/tags/react/" style="font-size: 15px;">react</a> <a href="/tags/wepback/" style="font-size: 15px;">wepback</a> <a href="/tags/面试题/" style="font-size: 15px;">面试题</a> <a href="/tags/cache/" style="font-size: 15px;">cache</a> <a href="/tags/前端开发/" style="font-size: 15px;">前端开发</a> <a href="/tags/优化技巧/" style="font-size: 15px;">优化技巧</a> <a href="/tags/js-继基础/" style="font-size: 15px;">js 继基础</a> <a href="/tags/面试题（-）/" style="font-size: 15px;">面试题（-）</a> <a href="/tags/面试总结/" style="font-size: 15px;">面试总结</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-archive"> 归档</i></div><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-you"> 友情链接</i></div><ul></ul><a href="http://www.example1.com/" title="site-name1" target="_blank">site-name1</a><ul></ul><a href="http://www.example2.com/" title="site-name2" target="_blank">site-name2</a><ul></ul><a href="http://www.example3.com/" title="site-name3" target="_blank">site-name3</a></div></div></div></div><a id="totop" href="#top"></a><div id="footer"><div class="footer-info"><p><a href="/baidusitemap.xml">网站地图</a> |  <a href="/atom.xml">订阅本站</a> |  <a href="/about/">联系博主</a></p><p>本站总访问量：<i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>次，本站总访客数:<i id="busuanzi_container_site_uv"><i id="busuanzi_value_site_uv"></i></i>人</p><p><span> Copyright &copy;<a href="/." rel="nofollow">李翠英.</a></span><span> Theme by<a rel="nofollow" target="_blank" href="https://github.com/chaooo/hexo-theme-BlueLake"> BlueLake.</a></span><span> Count by<a href="http://busuanzi.ibruce.info/"> busuanzi.</a></span><span> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a></span></p></div></div></div><script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script type="text/javascript" src="/js/search.json.js?v=2.0.3"></script><script type="text/javascript" src="/js/toctotop.js?v=2.0.3" async></script><link rel="stylesheet" type="text/css" href="/share/css/share.css"><script type="text/javascript" src="/share/js/social-share.js" charset="utf-8"></script><script type="text/javascript" src="/share/js/qrcode.js" charset="utf-8"></script></body></html>
